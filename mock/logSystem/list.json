@@ -1,0 +1,11 @@
+{
+  "code": "200",
+  "data": [
+    {
+      "systemName": "123",
+      "systemCode": "px",
+      "version": 28
+    }
+  ],
+  "message": "获取路由成功"
+}

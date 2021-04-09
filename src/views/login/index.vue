@@ -1,16 +1,16 @@
 <template>
   <div class="login-container">
-    <vp-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
+    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
         <h3 class="title">Login Form</h3>
       </div>
 
-      <vp-form-item prop="username">
+      <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon-class="user" />
         </span>
-        <vp-input
+        <el-input
           ref="username"
           v-model="loginForm.username"
           placeholder="Username"
@@ -19,14 +19,14 @@
           tabindex="1"
           autocomplete="on"
         />
-      </vp-form-item>
+      </el-form-item>
 
-      <vp-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
-        <vp-form-item prop="password">
+      <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
+        <el-form-item prop="password">
           <span class="svg-container">
             <svg-icon icon-class="password" />
           </span>
-          <vp-input
+          <el-input
             :key="passwordType"
             ref="password"
             v-model="loginForm.password"
@@ -42,10 +42,10 @@
           <span class="show-pwd" @click="showPwd">
             <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
           </span>
-        </vp-form-item>
-      </vp-tooltip>
+        </el-form-item>
+      </el-tooltip>
 
-      <vp-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</vp-button>
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
 
       <div style="position:relative">
         <div class="tips">
@@ -57,19 +57,19 @@
           <span>Password : any</span>
         </div>
 
-        <vp-button class="thirdparty-button" type="primary" @click="showDialog=true">
+        <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
           Or connect with
-        </vp-button>
+        </el-button>
       </div>
-    </vp-form>
+    </el-form>
 
-    <vp-dialog title="Or connect with" :visible.sync="showDialog">
+    <el-dialog title="Or connect with" :visible.sync="showDialog">
       Can not be simulated on local, so please combine you own business simulation! ! !
       <br>
       <br>
       <br>
       <social-sign />
-    </vp-dialog>
+    </el-dialog>
   </div>
 </template>
 
@@ -228,14 +228,14 @@ $light_gray: #fff;
 $cursor: #fff;
 
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
-  .login-container .vp-input input {
+  .login-container .el-input input {
     color: $cursor;
   }
 }
 
-/* reset vortex-pc css */
+/* reset element-ui css */
 .login-container {
-  .vp-input {
+  .el-input {
     display: inline-block;
     height: 47px;
     width: 85%;
@@ -257,7 +257,7 @@ $cursor: #fff;
     }
   }
 
-  .vp-form-item {
+  .el-form-item {
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;

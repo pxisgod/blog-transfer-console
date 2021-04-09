@@ -4,10 +4,10 @@
       Your roles: {{ roles }}
     </div>
     Switch roles:
-    <vp-radio-group v-model="switchRoles">
-      <vp-radio-button label="editor" />
-      <vp-radio-button label="admin" />
-    </vp-radio-group>
+    <el-radio-group v-model="switchRoles">
+      <el-radio-button label="editor" />
+      <el-radio-button label="admin" />
+    </el-radio-group>
   </div>
 </template>
 

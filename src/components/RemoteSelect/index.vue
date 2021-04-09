@@ -1,8 +1,8 @@
 <template>
-  <vp-select v-model="value" :filterable="search" @change="changeFunc" remote reserve-keyword placeholder="请输入关键词" :remote-method="remoteMethod" :loading="loading">
-    <vp-option v-for="item in options" :key="item[valueKey]" :label="item[labelKey]" :value="item[valueKey]">
-    </vp-option>
-  </vp-select>
+  <el-select v-model="value" :filterable="search" @change="changeFunc" remote reserve-keyword placeholder="请输入关键词" :remote-method="remoteMethod" :loading="loading">
+    <el-option v-for="item in options" :key="item[valueKey]" :label="item[labelKey]" :value="item[valueKey]">
+    </el-option>
+  </el-select>
 </template>
 
 <script>

@@ -1,12 +1,12 @@
 import {
   addResizeListener,
   removeResizeListener
-} from "vortex-pc/src/utils/resize-event";
+} from "element-ui/src/utils/resize-event";
 
 /**
  * How to use
- * <vp-table height="100px" v-el-height-adaptive-table="{bottomOffset: 30}">...</vp-table>
- * vp-table height is must be set
+ * <el-table height="100px" v-el-height-adaptive-table="{bottomOffset: 30}">...</el-table>
+ * el-table height is must be set
  * bottomOffset: 30(default)   // The height of the table from the bottom of the page.
  */
 
@@ -16,7 +16,7 @@ const doResize = (el, binding, vnode) => {
   const { value } = binding;
 
   if (!$table.height) {
-    throw new Error(`vp-$table must set the height. Such as height='100px'`);
+    throw new Error(`el-$table must set the height. Such as height='100px'`);
   }
   const bottomOffset = (value && value.bottomOffset) || 30;
 

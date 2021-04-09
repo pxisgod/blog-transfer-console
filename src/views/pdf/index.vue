@@ -4,9 +4,9 @@
       Here we use window.print() to implement the feature of downloading PDF.
     </aside>
     <router-link target="_blank" to="/pdf/download">
-      <vp-button type="primary">
+      <el-button type="primary">
         Click to download PDF
-      </vp-button>
+      </el-button>
     </router-link>
   </div>
 </template>

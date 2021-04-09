@@ -3,188 +3,188 @@
     <div class="filter-container">
       <system-select v-model="listQuery.logInfo.systemCode" @keyup.enter.native="handleQuery" class="filter-item"></system-select>
 
-      <vp-select v-model="listQuery.logInfo.logType" class="filter-item" placeholder="日志类型" clearable>
-        <vp-option v-for="item in logType" :key="item.key" :label="item.display_name" :value="item.key" />
-      </vp-select>
-      <vp-select v-model="listQuery.logInfo.dataType" class="filter-item" placeholder="操作类型" clearable>
-        <vp-option v-for="item in dataType" :key="item.key" :label="item.display_name" :value="item.key" />
-      </vp-select>
-      <vp-button v-waves class="filter-item" type="primary" icon="vp-icon-search" @click="handleQuery">
+      <el-select v-model="listQuery.logInfo.logType" class="filter-item" placeholder="日志类型" clearable>
+        <el-option v-for="item in logType" :key="item.key" :label="item.display_name" :value="item.key" />
+      </el-select>
+      <el-select v-model="listQuery.logInfo.dataType" class="filter-item" placeholder="操作类型" clearable>
+        <el-option v-for="item in dataType" :key="item.key" :label="item.display_name" :value="item.key" />
+      </el-select>
+      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleQuery">
         搜索
-      </vp-button>
-      <vp-button class="filter-item" v-if="roles.includes('admin')" style="margin-left: 10px;" type="primary" icon="vp-icon-edit" @click="handleCreate">
+      </el-button>
+      <el-button class="filter-item" v-if="roles.includes('admin')" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
         添加路由
-      </vp-button>
-      <vp-button class="filter-item" v-if="roles.includes('admin')" style="margin-right: 0px;" type="primary" icon="vp-icon-phone" @click="flushCache" >
+      </el-button>
+      <el-button class="filter-item" v-if="roles.includes('admin')" style="margin-right: 0px;" type="primary" icon="el-icon-phone" @click="flushCache" >
         同步缓存
-      </vp-button>
-      <vp-button class="filter-item" style="margin-right: 0px;" type="primary" icon="vp-icon-phone" @click="goFlushCacheState">
+      </el-button>
+      <el-button class="filter-item" style="margin-right: 0px;" type="primary" icon="el-icon-phone" @click="goFlushCacheState">
         同步缓存状态
-      </vp-button>
+      </el-button>
 
     </div>
 
-    <vp-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row>
-      <vp-table-column label="路由ID" align="center" width="80px">
+    <el-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row>
+      <el-table-column label="路由ID" align="center" width="80px">
         <template slot-scope="scope">
           <span>{{ scope.row.routeId}}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="日志编码" align="center">
+      </el-table-column>
+      <el-table-column label="日志编码" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.logCode }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="日志名称" align="center">
+      </el-table-column>
+      <el-table-column label="日志名称" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.logName }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="中心编码" align="center">
+      </el-table-column>
+      <el-table-column label="中心编码" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.systemCode }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="日志类型">
+      </el-table-column>
+      <el-table-column label="日志类型">
         <template slot-scope="{row}">
-          <vp-tag>{{ row.logType | logTypeFilter }}</vp-tag>
+          <el-tag>{{ row.logType | logTypeFilter }}</el-tag>
         </template>
-      </vp-table-column>
-      <vp-table-column label="数据类型">
+      </el-table-column>
+      <el-table-column label="数据类型">
         <template slot-scope="{row}">
-          <vp-tag>{{ row.dataType | dataTypeFilter }}</vp-tag>
+          <el-tag>{{ row.dataType | dataTypeFilter }}</el-tag>
         </template>
-      </vp-table-column>
-      <vp-table-column label="存储类型">
+      </el-table-column>
+      <el-table-column label="存储类型">
         <template slot-scope="scope">
           <a>{{ scope.row.storageType| storageTypeFilter }}</a>
         </template>
-      </vp-table-column>
-      <vp-table-column label="保障级别">
+      </el-table-column>
+      <el-table-column label="保障级别">
         <template slot-scope="scope">
           <span>{{ scope.row.assuranceLevel | assuranceLevelFilter }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="重试次数">
+      </el-table-column>
+      <el-table-column label="重试次数">
         <template slot-scope="scope">
           <a>{{ scope.row.retryTime }}</a>
         </template>
-      </vp-table-column>
-      <vp-table-column label="启用状态">
+      </el-table-column>
+      <el-table-column label="启用状态">
         <template slot-scope="scope">
           <span>{{ scope.row.state | stateTypeFilter }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="操作" align="center" width="300px" class-name="small-padding fixed-width">
+      </el-table-column>
+      <el-table-column label="操作" align="center" width="300px" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <vp-button v-if="roles.includes('admin')" type="primary" size="mini" @click="handleUpdate(row)">
+          <el-button v-if="roles.includes('admin')" type="primary" size="mini" @click="handleUpdate(row)">
             编辑
-          </vp-button>
-          <vp-button v-else type="primary" size="mini" @click="handleView(row)">
+          </el-button>
+          <el-button v-else type="primary" size="mini" @click="handleView(row)">
             查看
-          </vp-button>
-          <vp-button size="mini" type="danger" @click="handleDelete(row)" v-if="roles.includes('admin')">
+          </el-button>
+          <el-button size="mini" type="danger" @click="handleDelete(row)" v-if="roles.includes('admin')">
             删除
-          </vp-button>
-          <vp-dropdown size="mini" type="primary" style="margin-left:10px;">
-            <vp-button type="primary" size="mini">
+          </el-button>
+          <el-dropdown size="mini" type="primary" style="margin-left:10px;">
+            <el-button type="primary" size="mini">
               更多
-            </vp-button>
-            <vp-dropdown-menu slot="dropdown">
-              <vp-dropdown-item @click.native="handleDb(row)">库配置</vp-dropdown-item>
-              <vp-dropdown-item @click.native="handleTable(row)">表配置</vp-dropdown-item>
-              <vp-dropdown-item @click.native="handleBeforeFilter(row)">前置过滤</vp-dropdown-item>
-              <vp-dropdown-item @click.native="handleMapper(row)">映射配置</vp-dropdown-item>
-              <vp-dropdown-item @click.native="handleAfterFilter(row)">后置过滤</vp-dropdown-item>
-              <vp-dropdown-item @click.native="handleVerify(row)">打分配置</vp-dropdown-item>
-              <vp-dropdown-item @click.native="handleDistribute(row)">分发配置</vp-dropdown-item>
-            </vp-dropdown-menu>
-          </vp-dropdown>
+            </el-button>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="handleDb(row)">库配置</el-dropdown-item>
+              <el-dropdown-item @click.native="handleTable(row)">表配置</el-dropdown-item>
+              <el-dropdown-item @click.native="handleBeforeFilter(row)">前置过滤</el-dropdown-item>
+              <el-dropdown-item @click.native="handleMapper(row)">映射配置</el-dropdown-item>
+              <el-dropdown-item @click.native="handleAfterFilter(row)">后置过滤</el-dropdown-item>
+              <el-dropdown-item @click.native="handleVerify(row)">打分配置</el-dropdown-item>
+              <el-dropdown-item @click.native="handleDistribute(row)">分发配置</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
 
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.pageRequest.page" :limit.sync="listQuery.pageRequest.size" @pagination="getList" />
 
-    <vp-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <vp-form ref="dataForm" :rules="rules" :model="temp" label-position="right" label-width="120px" style="width: 400px; margin-left:50px;">
-        <vp-form-item label="日志编码" prop="routeCode">
-          <vp-input v-if="dialogStatus==='create'" v-model="temp.logCode" />
-          <vp-input v-else v-model="temp.logCode" disabled />
-        </vp-form-item>
-        <vp-form-item v-if="dialogStatus !='view'" label="日志名称" prop="routeName">
-          <vp-input v-model="temp.logName" />
-        </vp-form-item>
-        <vp-form-item v-else label="日志名称" prop="routeName">
-          <vp-input v-model="temp.logName" disabled/>
-        </vp-form-item>
-        <vp-form-item label="中心编码" prop="systemCode">
+    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
+      <el-form ref="dataForm" :rules="rules" :model="temp" label-position="right" label-width="120px" style="width: 400px; margin-left:50px;">
+        <el-form-item label="日志编码" prop="routeCode">
+          <el-input v-if="dialogStatus==='create'" v-model="temp.logCode" />
+          <el-input v-else v-model="temp.logCode" disabled />
+        </el-form-item>
+        <el-form-item v-if="dialogStatus !='view'" label="日志名称" prop="routeName">
+          <el-input v-model="temp.logName" />
+        </el-form-item>
+        <el-form-item v-else label="日志名称" prop="routeName">
+          <el-input v-model="temp.logName" disabled/>
+        </el-form-item>
+        <el-form-item label="中心编码" prop="systemCode">
           <system-select v-if="dialogStatus==='create'" v-model="temp.systemCode"></system-select>
           <system-select v-else v-model="temp.systemCode" disabled></system-select>
-        </vp-form-item>
-        <vp-form-item label="日志类型" prop="logType" v-if="dialogStatus !='view'">
-          <vp-select v-model="temp.logType" class="filter-item" placeholder="Please select">
-            <vp-option v-for="item in logType" :key="item.key" :label="item.display_name" :value="item.key" />
-          </vp-select>
-        </vp-form-item>
-        <vp-form-item label="日志类型" prop="logType" v-else>
-          <vp-input :value="temp.logType|logTypeFilter" disabled></vp-input>
-        </vp-form-item>
-        <vp-form-item label="数据类型" prop="dataType">
-          <vp-select v-model="temp.dataType" class="filter-item" placeholder="Please select">
-            <vp-option v-for="item in dataType" :key="item.key" :label="item.display_name" :value="item.key" />
-          </vp-select>
-        </vp-form-item>
-        <vp-form-item label="存储类型" prop="storageType" v-if="dialogStatus !='view'">
-          <vp-select v-model="temp.storageType" class="filter-item" placeholder="Please select">
-            <vp-option v-for="item in storageType" :key="item.key" :label="item.display_name" :value="item.key" />
-          </vp-select>
-        </vp-form-item>
-        <vp-form-item label="存储类型" prop="storageType" v-else>
-          <vp-input :value="temp.storageType|storageTypeFilter" disabled></vp-input>
-        </vp-form-item>
-        <vp-form-item label="保障级别" prop="assuranceLevel" v-if="dialogStatus !='view'">
-          <vp-select v-model="temp.assuranceLevel" class="filter-item" placeholder="Please select">
-            <vp-option v-for="item in assuranceLevel" :key="item.key" :label="item.display_name" :value="item.key" />
-          </vp-select>
-        </vp-form-item>
-        <vp-form-item label="保障级别" prop="assuranceLevel" v-else>
-           <vp-input :value="temp.assuranceLevel|assuranceLevelFilter" disabled></vp-input>
-        </vp-form-item>
-        <vp-form-item label="重试次数" prop="retryTime" v-if="temp.assuranceLevel!=='DISCARDABLE'">
-          <vp-select v-model="temp.retryTime" class="filter-item" placeholder="Please select" v-if="dialogStatus !='view'">
-            <vp-option :label="1" :value="1" />
-            <vp-option :label="2" :value="2" />
-            <vp-option :label="3" :value="3" />
-            <vp-option :label="4" :value="4" />
-            <vp-option :label="5" :value="5" />
-          </vp-select>
-          <vp-select v-model="temp.retryTime" class="filter-item" placeholder="Please select" v-else disabled>
-            <vp-option :label="1" :value="1" />
-            <vp-option :label="2" :value="2" />
-            <vp-option :label="3" :value="3" />
-            <vp-option :label="4" :value="4" />
-            <vp-option :label="5" :value="5" />
-          </vp-select>
-        </vp-form-item>
-        <vp-form-item label="启用">
-          <vp-select v-model="temp.state" class="filter-item" placeholder="Please select" v-if="dialogStatus !='view'">
-            <vp-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key" />
-          </vp-select>
-          <vp-select v-model="temp.state" class="filter-item" placeholder="Please select" v-else disabled>
-            <vp-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key" />
-          </vp-select>
-        </vp-form-item>
-      </vp-form>
+        </el-form-item>
+        <el-form-item label="日志类型" prop="logType" v-if="dialogStatus !='view'">
+          <el-select v-model="temp.logType" class="filter-item" placeholder="Please select">
+            <el-option v-for="item in logType" :key="item.key" :label="item.display_name" :value="item.key" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="日志类型" prop="logType" v-else>
+          <el-input :value="temp.logType|logTypeFilter" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="数据类型" prop="dataType">
+          <el-select v-model="temp.dataType" class="filter-item" placeholder="Please select">
+            <el-option v-for="item in dataType" :key="item.key" :label="item.display_name" :value="item.key" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="存储类型" prop="storageType" v-if="dialogStatus !='view'">
+          <el-select v-model="temp.storageType" class="filter-item" placeholder="Please select">
+            <el-option v-for="item in storageType" :key="item.key" :label="item.display_name" :value="item.key" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="存储类型" prop="storageType" v-else>
+          <el-input :value="temp.storageType|storageTypeFilter" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="保障级别" prop="assuranceLevel" v-if="dialogStatus !='view'">
+          <el-select v-model="temp.assuranceLevel" class="filter-item" placeholder="Please select">
+            <el-option v-for="item in assuranceLevel" :key="item.key" :label="item.display_name" :value="item.key" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="保障级别" prop="assuranceLevel" v-else>
+           <el-input :value="temp.assuranceLevel|assuranceLevelFilter" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="重试次数" prop="retryTime" v-if="temp.assuranceLevel!=='DISCARDABLE'">
+          <el-select v-model="temp.retryTime" class="filter-item" placeholder="Please select" v-if="dialogStatus !='view'">
+            <el-option :label="1" :value="1" />
+            <el-option :label="2" :value="2" />
+            <el-option :label="3" :value="3" />
+            <el-option :label="4" :value="4" />
+            <el-option :label="5" :value="5" />
+          </el-select>
+          <el-select v-model="temp.retryTime" class="filter-item" placeholder="Please select" v-else disabled>
+            <el-option :label="1" :value="1" />
+            <el-option :label="2" :value="2" />
+            <el-option :label="3" :value="3" />
+            <el-option :label="4" :value="4" />
+            <el-option :label="5" :value="5" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="启用">
+          <el-select v-model="temp.state" class="filter-item" placeholder="Please select" v-if="dialogStatus !='view'">
+            <el-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key" />
+          </el-select>
+          <el-select v-model="temp.state" class="filter-item" placeholder="Please select" v-else disabled>
+            <el-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key" />
+          </el-select>
+        </el-form-item>
+      </el-form>
       <div slot="footer" class="dialog-footer">
-        <vp-button @click="dialogFormVisible = false">
+        <el-button @click="dialogFormVisible = false">
           取消
-        </vp-button>
-        <vp-button type="primary" @click="saveData" v-if="dialogStatus !='view'">
+        </el-button>
+        <el-button type="primary" @click="saveData" v-if="dialogStatus !='view'">
           保存
-        </vp-button>
+        </el-button>
       </div>
-    </vp-dialog>
+    </el-dialog>
   </div>
 </template>
 
@@ -660,7 +660,7 @@ export default {
 </script>
 
 <style>
-.vp-button.vp-button--primary.vp-button--mini.vp-dropdown__caret-button {
+.el-button.el-button--primary.el-button--mini.el-dropdown__caret-button {
   width: auto;
 }
 </style>

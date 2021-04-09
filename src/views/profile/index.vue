@@ -1,29 +1,29 @@
 <template>
   <div class="app-container">
     <div v-if="user">
-      <vp-row :gutter="20">
+      <el-row :gutter="20">
 
-        <vp-col :span="6" :xs="24">
+        <el-col :span="6" :xs="24">
           <user-card :user="user" />
-        </vp-col>
+        </el-col>
 
-        <vp-col :span="18" :xs="24">
-          <vp-card>
-            <vp-tabs v-model="activeTab">
-              <vp-tab-pane label="Activity" name="activity">
+        <el-col :span="18" :xs="24">
+          <el-card>
+            <el-tabs v-model="activeTab">
+              <el-tab-pane label="Activity" name="activity">
                 <activity />
-              </vp-tab-pane>
-              <vp-tab-pane label="Timeline" name="timeline">
+              </el-tab-pane>
+              <el-tab-pane label="Timeline" name="timeline">
                 <timeline />
-              </vp-tab-pane>
-              <vp-tab-pane label="Account" name="account">
+              </el-tab-pane>
+              <el-tab-pane label="Account" name="account">
                 <account :user="user" />
-              </vp-tab-pane>
-            </vp-tabs>
-          </vp-card>
-        </vp-col>
+              </el-tab-pane>
+            </el-tabs>
+          </el-card>
+        </el-col>
 
-      </vp-row>
+      </el-row>
     </div>
   </div>
 </template>

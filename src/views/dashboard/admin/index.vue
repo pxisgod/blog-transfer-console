@@ -3,30 +3,30 @@
 
     <panel-group />
 
-    <vp-row :gutter="32">
-      <vp-col :xs="24" :sm="24" :lg="18">
+    <el-row :gutter="32">
+      <el-col :xs="24" :sm="24" :lg="18">
         <div class="chart-wrapper">
           <bar-chart />
         </div>
-      </vp-col>
-      <vp-col :xs="24" :sm="24" :lg="6">
+      </el-col>
+      <el-col :xs="24" :sm="24" :lg="6">
         <div class="chart-wrapper">
           <pie-chart />
         </div>
-      </vp-col>
-    </vp-row>
+      </el-col>
+    </el-row>
 
-    <vp-row :gutter="8">
-      <vp-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 24}" :xl="{span: 24}" style="padding-right:8px;margin-bottom:30px;">
+    <el-row :gutter="8">
+      <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 24}" :xl="{span: 24}" style="padding-right:8px;margin-bottom:30px;">
         <transaction-table />
-      </vp-col>
-      <!-- <vp-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
+      </el-col>
+      <!-- <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
         <todo-list />
-      </vp-col>
-      <vp-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
+      </el-col>
+      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
         <box-card />
-      </vp-col> -->
-    </vp-row>
+      </el-col> -->
+    </el-row>
   </div>
 </template>
 

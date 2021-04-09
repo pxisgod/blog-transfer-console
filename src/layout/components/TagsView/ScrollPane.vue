@@ -1,7 +1,7 @@
 <template>
-  <vp-scrollbar ref="scrollContainer" :vertical="false" class="scroll-container" @wheel.native.prevent="handleScroll">
+  <el-scrollbar ref="scrollContainer" :vertical="false" class="scroll-container" @wheel.native.prevent="handleScroll">
     <slot />
-  </vp-scrollbar>
+  </el-scrollbar>
 </template>
 
 <script>
@@ -80,10 +80,10 @@ export default {
   overflow: hidden;
   width: 100%;
   /deep/ {
-    .vp-scrollbar__bar {
+    .el-scrollbar__bar {
       bottom: 0px;
     }
-    .vp-scrollbar__wrap {
+    .el-scrollbar__wrap {
       height: 49px;
     }
   }

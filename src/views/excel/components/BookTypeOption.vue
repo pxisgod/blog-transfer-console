@@ -1,14 +1,14 @@
 <template>
   <div style="display:inline-block;">
     <label class="radio-label">Book Type: </label>
-    <vp-select v-model="bookType" style="width:120px;">
-      <vp-option
+    <el-select v-model="bookType" style="width:120px;">
+      <el-option
         v-for="item in options"
         :key="item"
         :label="item"
         :value="item"
       />
-    </vp-select>
+    </el-select>
   </div>
 </template>
 

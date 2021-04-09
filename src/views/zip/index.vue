@@ -1,37 +1,37 @@
 <template>
   <div class="app-container">
-    <vp-input v-model="filename" placeholder="Please enter the file name (default file)" style="width:300px;" prefix-icon="vp-icon-document" />
-    <vp-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">
+    <el-input v-model="filename" placeholder="Please enter the file name (default file)" style="width:300px;" prefix-icon="el-icon-document" />
+    <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">
       Export Zip
-    </vp-button>
-    <vp-table v-loading="listLoading" :data="list" element-loading-text="拼命加载中" border fit highlight-current-row>
-      <vp-table-column align="center" label="ID" width="95">
+    </el-button>
+    <el-table v-loading="listLoading" :data="list" element-loading-text="拼命加载中" border fit highlight-current-row>
+      <el-table-column align="center" label="ID" width="95">
         <template slot-scope="scope">
           {{ scope.$index }}
         </template>
-      </vp-table-column>
-      <vp-table-column label="Title">
+      </el-table-column>
+      <el-table-column label="Title">
         <template slot-scope="scope">
           {{ scope.row.title }}
         </template>
-      </vp-table-column>
-      <vp-table-column label="Author" width="95" align="center">
+      </el-table-column>
+      <el-table-column label="Author" width="95" align="center">
         <template slot-scope="scope">
-          <vp-tag>{{ scope.row.author }}</vp-tag>
+          <el-tag>{{ scope.row.author }}</el-tag>
         </template>
-      </vp-table-column>
-      <vp-table-column label="Readings" width="115" align="center">
+      </el-table-column>
+      <el-table-column label="Readings" width="115" align="center">
         <template slot-scope="scope">
           {{ scope.row.pageviews }}
         </template>
-      </vp-table-column>
-      <vp-table-column align="center" label="Date" width="220">
+      </el-table-column>
+      <el-table-column align="center" label="Date" width="220">
         <template slot-scope="scope">
-          <i class="vp-icon-time" />
+          <i class="el-icon-time" />
           <span>{{ scope.row.display_time }}</span>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 

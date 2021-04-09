@@ -198,9 +198,9 @@ aside {
   z-index: 1000 !important;
 }
 
-.vp-table th.gutter {
-  /* 
-    * 解决element-ui 表格篡位的问题 👇 
+.el-table th.gutter {
+  /*
+    * 解决element-ui 表格篡位的问题 👇
     */
   display: table-cell !important;
 }

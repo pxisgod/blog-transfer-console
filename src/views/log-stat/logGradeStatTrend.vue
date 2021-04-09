@@ -2,20 +2,20 @@
   <div class="app-container" style="margin:24px 65px;">
     <page-head @back="goBack" content="日志打分统计详情"></page-head>
     <div class="filter-container">
-      <vp-input v-model="logStatInfo.systemCode" class="filter-item" style="width: 200px;"  :disabled="true"></vp-input>
-      <vp-input v-model="logStatInfo.logCode" placeholder="日志编码" style="width: 200px;" class="filter-item"
-                :disabled="true"></vp-input>
-      <vp-select v-model="myTimeType" class="filter-item" placeholder="时间类型选择" @change="timeTypeChange()">
-        <vp-option v-for="item in timeType" :key="item.key" :label="item.display_name" :value="item.key"/>
-      </vp-select>
-      <vp-select v-model="myStatPeriod" class="filter-item" placeholder="时间段选择" v-if="chooseTimePeriod" clearable>
-        <vp-option v-for="item in statPeriod" :key="item.key" :label="item.display_name" :value="item.key"/>
-      </vp-select>
-      <vp-date-picker placeholder="开始时间" class="filter-item" type="datetime" v-model="logStatInfo.beginTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></vp-date-picker>
-      <vp-date-picker placeholder="结束时间" class="filter-item" type="datetime" v-model="logStatInfo.endTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></vp-date-picker>
-      <vp-button v-waves class="filter-item" type="primary" icon="vp-icon-search" @click="getList">
+      <el-input v-model="logStatInfo.systemCode" class="filter-item" style="width: 200px;"  :disabled="true"></el-input>
+      <el-input v-model="logStatInfo.logCode" placeholder="日志编码" style="width: 200px;" class="filter-item"
+                :disabled="true"></el-input>
+      <el-select v-model="myTimeType" class="filter-item" placeholder="时间类型选择" @change="timeTypeChange()">
+        <el-option v-for="item in timeType" :key="item.key" :label="item.display_name" :value="item.key"/>
+      </el-select>
+      <el-select v-model="myStatPeriod" class="filter-item" placeholder="时间段选择" v-if="chooseTimePeriod" clearable>
+        <el-option v-for="item in statPeriod" :key="item.key" :label="item.display_name" :value="item.key"/>
+      </el-select>
+      <el-date-picker placeholder="开始时间" class="filter-item" type="datetime" v-model="logStatInfo.beginTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
+      <el-date-picker placeholder="结束时间" class="filter-item" type="datetime" v-model="logStatInfo.endTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
+      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="getList">
         搜索
-      </vp-button>
+      </el-button>
     </div>
     <div :id="id" class="chart-container" />
   </div>

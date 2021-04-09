@@ -1,15 +1,15 @@
 <template>
-  <vp-dropdown trigger="click" @command="handleSetSize">
+  <el-dropdown trigger="click" @command="handleSetSize">
     <div>
       <svg-icon class-name="size-icon" icon-class="size" />
     </div>
-    <vp-dropdown-menu slot="dropdown">
-      <vp-dropdown-item v-for="item of sizeOptions" :key="item.value" :disabled="size===item.value" :command="item.value">
+    <el-dropdown-menu slot="dropdown">
+      <el-dropdown-item v-for="item of sizeOptions" :key="item.value" :disabled="size===item.value" :command="item.value">
         {{
           item.label }}
-      </vp-dropdown-item>
-    </vp-dropdown-menu>
-  </vp-dropdown>
+      </el-dropdown-item>
+    </el-dropdown-menu>
+  </el-dropdown>
 </template>
 
 <script>

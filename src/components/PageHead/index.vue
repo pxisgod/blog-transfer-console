@@ -1,7 +1,7 @@
 <template>
   <div class="el-page-header">
     <div class="el-page-header__left" @click="back()">
-      <i class="vp-icon-back"></i>
+      <i class="el-icon-back"></i>
       <div class="el-page-header__title">返回</div>
     </div>
     <div class="el-page-header__content">{{content}}</div>
@@ -53,7 +53,7 @@ export default {
   transform: translateY(-50%);
   background-color: #dcdfe6;
 }
-.el-page-header__left .vp-icon-back {
+.el-page-header__left .el-icon-back {
   font-size: 18px;
   margin-right: 6px;
   align-self: center;

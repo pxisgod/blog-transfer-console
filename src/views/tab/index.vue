@@ -1,14 +1,14 @@
 <template>
   <div class="tab-container">
-    <vp-tag>mounted times ：</vp-tag>
-    <vp-alert :closable="false" style="width:200px;display:inline-block;vertical-align: middle;margin-left:30px;" title="Tab with keep-alive" type="success" />
-    <vp-tabs v-model="activeName" style="margin-top:15px;" type="border-card">
-      <vp-tab-pane v-for="item in tabMapOptions" :key="item.key" :label="item.label" :name="item.key">
+    <el-tag>mounted times ：</el-tag>
+    <el-alert :closable="false" style="width:200px;display:inline-block;vertical-align: middle;margin-left:30px;" title="Tab with keep-alive" type="success" />
+    <el-tabs v-model="activeName" style="margin-top:15px;" type="border-card">
+      <el-tab-pane v-for="item in tabMapOptions" :key="item.key" :label="item.label" :name="item.key">
         <keep-alive>
           <tab-pane v-if="activeName==item.key" :type="item.key" @create="showCreatedTimes" />
         </keep-alive>
-      </vp-tab-pane>
-    </vp-tabs>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 

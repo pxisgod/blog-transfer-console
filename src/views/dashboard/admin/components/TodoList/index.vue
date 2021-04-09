@@ -52,7 +52,7 @@ const defalutList = [
   { text: "follow author", done: false },
   { text: "vue-element-admin", done: true },
   { text: "vue", done: true },
-  { text: "vortex-pc", done: true },
+  { text: "element-ui", done: true },
   { text: "axios", done: true },
   { text: "webpack", done: true }
 ];

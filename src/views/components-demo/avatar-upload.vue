@@ -7,9 +7,9 @@
 
     <pan-thumb :image="image" />
 
-    <vp-button type="primary" icon="upload" style="position: absolute;bottom: 15px;margin-left: 40px;" @click="imagecropperShow=true">
+    <el-button type="primary" icon="upload" style="position: absolute;bottom: 15px;margin-left: 40px;" @click="imagecropperShow=true">
       Change Avatar
-    </vp-button>
+    </el-button>
 
     <image-cropper
       v-show="imagecropperShow"

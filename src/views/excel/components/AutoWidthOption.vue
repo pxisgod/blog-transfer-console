@@ -1,14 +1,14 @@
 <template>
   <div style="display:inline-block;">
     <label class="radio-label">Cell Auto-Width: </label>
-    <vp-radio-group v-model="autoWidth">
-      <vp-radio :label="true" border>
+    <el-radio-group v-model="autoWidth">
+      <el-radio :label="true" border>
         True
-      </vp-radio>
-      <vp-radio :label="false" border>
+      </el-radio>
+      <el-radio :label="false" border>
         False
-      </vp-radio>
-    </vp-radio-group>
+      </el-radio>
+    </el-radio-group>
   </div>
 </template>
 

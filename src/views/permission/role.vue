@@ -1,46 +1,46 @@
 <template>
   <div class="app-container">
-    <vp-button type="primary" @click="handleAddRole">New Role</vp-button>
+    <el-button type="primary" @click="handleAddRole">New Role</el-button>
 
-    <vp-table :data="rolesList" style="width: 100%;margin-top:30px;" border>
-      <vp-table-column align="center" label="Role Key" width="220">
+    <el-table :data="rolesList" style="width: 100%;margin-top:30px;" border>
+      <el-table-column align="center" label="Role Key" width="220">
         <template slot-scope="scope">
           {{ scope.row.key }}
         </template>
-      </vp-table-column>
-      <vp-table-column align="center" label="Role Name" width="220">
+      </el-table-column>
+      <el-table-column align="center" label="Role Name" width="220">
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
-      </vp-table-column>
-      <vp-table-column align="header-center" label="Description">
+      </el-table-column>
+      <el-table-column align="header-center" label="Description">
         <template slot-scope="scope">
           {{ scope.row.description }}
         </template>
-      </vp-table-column>
-      <vp-table-column align="center" label="Operations">
+      </el-table-column>
+      <el-table-column align="center" label="Operations">
         <template slot-scope="scope">
-          <vp-button type="primary" size="small" @click="handleEdit(scope)">Edit</vp-button>
-          <vp-button type="danger" size="small" @click="handleDelete(scope)">Delete</vp-button>
+          <el-button type="primary" size="small" @click="handleEdit(scope)">Edit</el-button>
+          <el-button type="danger" size="small" @click="handleDelete(scope)">Delete</el-button>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
 
-    <vp-dialog :visible.sync="dialogVisible" :title="dialogType==='edit'?'Edit Role':'New Role'">
-      <vp-form :model="role" label-width="80px" label-position="left">
-        <vp-form-item label="Name">
-          <vp-input v-model="role.name" placeholder="Role Name" />
-        </vp-form-item>
-        <vp-form-item label="Desc">
-          <vp-input
+    <el-dialog :visible.sync="dialogVisible" :title="dialogType==='edit'?'Edit Role':'New Role'">
+      <el-form :model="role" label-width="80px" label-position="left">
+        <el-form-item label="Name">
+          <el-input v-model="role.name" placeholder="Role Name" />
+        </el-form-item>
+        <el-form-item label="Desc">
+          <el-input
             v-model="role.description"
             :autosize="{ minRows: 2, maxRows: 4}"
             type="textarea"
             placeholder="Role Description"
           />
-        </vp-form-item>
-        <vp-form-item label="Menus">
-          <vp-tree
+        </el-form-item>
+        <el-form-item label="Menus">
+          <el-tree
             ref="tree"
             :check-strictly="checkStrictly"
             :data="routesData"
@@ -49,13 +49,13 @@
             node-key="path"
             class="permission-tree"
           />
-        </vp-form-item>
-      </vp-form>
+        </el-form-item>
+      </el-form>
       <div style="text-align:right;">
-        <vp-button type="danger" @click="dialogVisible=false">Cancel</vp-button>
-        <vp-button type="primary" @click="confirmRole">Confirm</vp-button>
+        <el-button type="danger" @click="dialogVisible=false">Cancel</el-button>
+        <el-button type="primary" @click="confirmRole">Confirm</el-button>
       </div>
-    </vp-dialog>
+    </el-dialog>
   </div>
 </template>
 

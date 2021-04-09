@@ -1,6 +1,6 @@
 <template>
-  <vp-row :gutter="40" class="panel-group">
-    <vp-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+  <el-row :gutter="40" class="panel-group">
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-people">
           <svg-icon icon-class="chart" class-name="card-panel-icon" />
@@ -12,8 +12,8 @@
           <count-to :start-val="0" :end-val="logNum" :duration="2600" class="card-panel-num" />
         </div>
       </div>
-    </vp-col>
-    <vp-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-message">
           <svg-icon icon-class="message" class-name="card-panel-icon" />
@@ -25,8 +25,8 @@
           <count-to :start-val="0" :end-val="successNum" :duration="3000" class="card-panel-num" />
         </div>
       </div>
-    </vp-col>
-    <vp-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-money">
           <svg-icon icon-class="bug" class-name="card-panel-icon" />
@@ -38,8 +38,8 @@
           <count-to :start-val="0" :end-val="errNum" :duration="3200" class="card-panel-num" />
         </div>
       </div>
-    </vp-col>
-    <vp-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-shopping">
           <svg-icon icon-class="speed" class-name="card-panel-icon" />
@@ -51,8 +51,8 @@
           <count-to :start-val="0" :end-val="filterNum" :duration="3600" class="card-panel-num" />
         </div>
       </div>
-    </vp-col>
-  </vp-row>
+    </el-col>
+  </el-row>
 </template>
 
 <script>

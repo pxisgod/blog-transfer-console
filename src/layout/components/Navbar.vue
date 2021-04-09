@@ -13,37 +13,37 @@
 
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
 
-        <vp-tooltip content="Global Size" effect="dark" placement="bottom">
+        <el-tooltip content="Global Size" effect="dark" placement="bottom">
           <size-select id="size-select" class="right-menu-item hover-effect" />
-        </vp-tooltip>
+        </el-tooltip>
 
       </template>
       -->
 
-      <vp-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
+      <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper" >
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar" style= "vertical-align: middle;">
-          <i class="vp-icon-caret-bottom" />
+          <i class="el-icon-caret-bottom" />
           <span>{{name}}</span>
         </div>
-        <vp-dropdown-menu slot="dropdown">
+        <el-dropdown-menu slot="dropdown">
           <router-link to="/log-config/storageConfig">
-            <vp-dropdown-item>存储配置</vp-dropdown-item>
+            <el-dropdown-item>存储配置</el-dropdown-item>
           </router-link>
           <router-link to="/log-config/routeConfig">
-            <vp-dropdown-item>路由配置</vp-dropdown-item>
+            <el-dropdown-item>路由配置</el-dropdown-item>
           </router-link>
           <router-link to="/log-stat/logStat" >
-            <vp-dropdown-item divided>日志量统计</vp-dropdown-item>
+            <el-dropdown-item divided>日志量统计</el-dropdown-item>
           </router-link>
           <router-link to="/log-stat/logGradeStat">
-            <vp-dropdown-item>打分统计</vp-dropdown-item>
+            <el-dropdown-item>打分统计</el-dropdown-item>
           </router-link>
-          <vp-dropdown-item divided>
+          <el-dropdown-item divided>
             <span style="display:block;" @click="logout">注销</span>
-          </vp-dropdown-item>
-        </vp-dropdown-menu>
-      </vp-dropdown>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
   </div>
 </template>
@@ -152,7 +152,7 @@ export default {
           border-radius: 10px;
         }
 
-        .vp-icon-caret-bottom {
+        .el-icon-caret-bottom {
           cursor: pointer;
           position: absolute;
           right: -20px;

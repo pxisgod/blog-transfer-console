@@ -1,37 +1,37 @@
 <template>
-  <vp-table :data="list" style="width: 100%;padding-top: 15px;">
-    <vp-table-column label="中心" min-width="200">
+  <el-table :data="list" style="width: 100%;padding-top: 15px;">
+    <el-table-column label="中心" min-width="200">
       <template slot-scope="scope">
         {{ scope.row.systemCode }}
       </template>
-    </vp-table-column>
-    <vp-table-column label="日志总量" align="center">
+    </el-table-column>
+    <el-table-column label="日志总量" align="center">
       <template slot-scope="scope">
         {{ scope.row.logNum }}
       </template>
-    </vp-table-column>
-    <vp-table-column label="成功量"  align="center">
+    </el-table-column>
+    <el-table-column label="成功量"  align="center">
       <template slot-scope="{row}">
-        <vp-tag type="success">
+        <el-tag type="success">
           {{ row.successNum }}
-        </vp-tag>
+        </el-tag>
       </template>
-    </vp-table-column>
-    <vp-table-column label="过滤量"  align="center">
+    </el-table-column>
+    <el-table-column label="过滤量"  align="center">
       <template slot-scope="{row}">
-        <vp-tag type="info">
+        <el-tag type="info">
           {{ row.filterNum }}
-        </vp-tag>
+        </el-tag>
       </template>
-    </vp-table-column>
-    <vp-table-column label="失败量"  align="center">
+    </el-table-column>
+    <el-table-column label="失败量"  align="center">
       <template slot-scope="{row}">
-        <vp-tag type="danger">
+        <el-tag type="danger">
           {{ row.errNum }}
-        </vp-tag>
+        </el-tag>
       </template>
-    </vp-table-column>
-  </vp-table>
+    </el-table-column>
+  </el-table>
 </template>
 
 <script>

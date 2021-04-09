@@ -2,77 +2,77 @@
   <div class="app-container" style="margin:24px 65px;">
     <page-head @back="goBack" content="打分配置"></page-head>
     <div class="filter-container">
-      <vp-form ref="form" :model="baseInfo" label-width="80px">
-        <vp-row :gutter="20">
-          <vp-col :span="8">
-            <vp-form-item label="告警阈值">
-              <vp-input v-model="baseInfo.threshold" v-if="roles.includes('admin')"></vp-input>
-              <vp-input v-model="baseInfo.threshold" v-else disabled></vp-input>
-            </vp-form-item>
-          </vp-col>
-          <vp-col :span="8">
-            <vp-form-item label="启用">
-              <vp-select v-model="baseInfo.state" class="filter-item" placeholder="Please select" v-if="roles.includes('admin')">
-                <vp-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key"/>
-              </vp-select>
-              <vp-select v-model="baseInfo.state" class="filter-item" placeholder="Please select" v-else disabled>
-                <vp-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key"/>
-              </vp-select>
-            </vp-form-item>
-          </vp-col>
-        </vp-row>
-      </vp-form>
-      <vp-button v-waves class="filter-item" type="primary" size="small" plain @click="handleAdd" v-if="roles.includes('admin')">
+      <el-form ref="form" :model="baseInfo" label-width="80px">
+        <el-row :gutter="20">
+          <el-col :span="8">
+            <el-form-item label="告警阈值">
+              <el-input v-model="baseInfo.threshold" v-if="roles.includes('admin')"></el-input>
+              <el-input v-model="baseInfo.threshold" v-else disabled></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="启用">
+              <el-select v-model="baseInfo.state" class="filter-item" placeholder="Please select" v-if="roles.includes('admin')">
+                <el-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key"/>
+              </el-select>
+              <el-select v-model="baseInfo.state" class="filter-item" placeholder="Please select" v-else disabled>
+                <el-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key"/>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <el-button v-waves class="filter-item" type="primary" size="small" plain @click="handleAdd" v-if="roles.includes('admin')">
         添加字段
-      </vp-button>
+      </el-button>
     </div>
 
-    <vp-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
-      <vp-table-column align="center" label="字段名">
+    <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
+      <el-table-column align="center" label="字段名">
         <template slot-scope="scope">
           <template v-if="scope.row.edit">
-            <vp-select v-model="scope.row.columnName" class="filter-item" placeholder="Please select"
+            <el-select v-model="scope.row.columnName" class="filter-item" placeholder="Please select"
                        @visible-change="getPickableTableParam()" >
-              <vp-option v-for="item in pickableTableParam" :key="item.tableColName" :label="item.tableColName" :value="item.tableColName" />
-            </vp-select>
+              <el-option v-for="item in pickableTableParam" :key="item.tableColName" :label="item.tableColName" :value="item.tableColName" />
+            </el-select>
           </template>
           <span v-else>{{ scope.row.columnName }}</span>
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column label="评分">
+      <el-table-column label="评分">
         <template slot-scope="scope">
           <template v-if="scope.row.edit">
-            <vp-input v-model="scope.row.columnWeight" class="edit-input" size="small" />
+            <el-input v-model="scope.row.columnWeight" class="edit-input" size="small" />
           </template>
           <span v-else>{{ scope.row.columnWeight }}</span>
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column align="center" label="操作" width="300" v-if="roles.includes('admin')">
+      <el-table-column align="center" label="操作" width="300" v-if="roles.includes('admin')">
         <template slot-scope="scope">
-          <vp-button v-if="scope.row.edit" size="mini" icon="vp-icon-circle-cancel-outline" @click="cancelEdit(scope.row,scope.$index)">
+          <el-button v-if="scope.row.edit" size="mini" icon="el-icon-circle-cancel-outline" @click="cancelEdit(scope.row,scope.$index)">
             Cancel
-          </vp-button>
-          <vp-button v-if="scope.row.edit" type="success" size="mini" icon="vp-icon-circle-check-outline" @click="confirmEdit(scope.row)">
+          </el-button>
+          <el-button v-if="scope.row.edit" type="success" size="mini" icon="el-icon-circle-check-outline" @click="confirmEdit(scope.row)">
             Ok
-          </vp-button>
-          <vp-button v-else type="primary" size="mini" icon="vp-icon-edit" @click="handleEdit(scope.row,scope.$index)">
+          </el-button>
+          <el-button v-else type="primary" size="mini" icon="el-icon-edit" @click="handleEdit(scope.row,scope.$index)">
             修改
-          </vp-button>
-          <vp-button type="danger" size="mini" icon="vp-icon-circle-close-outline" @click="handleDel(scope.$index)">
+          </el-button>
+          <el-button type="danger" size="mini" icon="el-icon-circle-close-outline" @click="handleDel(scope.$index)">
             删除
-          </vp-button>
+          </el-button>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
     <div style="padding:24px 0;">
-      <vp-button v-waves class="filter-item" type="primary" @click="handleSave" v-if="roles.includes('admin')">
+      <el-button v-waves class="filter-item" type="primary" @click="handleSave" v-if="roles.includes('admin')">
         保存
-      </vp-button>
-      <vp-button v-waves class="filter-item" type="primary" @click="goBack">
+      </el-button>
+      <el-button v-waves class="filter-item" type="primary" @click="goBack">
         返回
-      </vp-button>
+      </el-button>
     </div>
   </div>
 </template>

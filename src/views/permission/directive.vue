@@ -5,63 +5,63 @@
       <div>
         <span v-permission="['admin']" class="permission-alert">
           Only
-          <vp-tag class="permission-tag" size="small">admin</vp-tag> can see this
+          <el-tag class="permission-tag" size="small">admin</el-tag> can see this
         </span>
-        <vp-tag v-permission="['admin']" class="permission-sourceCode" type="info">
+        <el-tag v-permission="['admin']" class="permission-sourceCode" type="info">
           v-permission="['admin']"
-        </vp-tag>
+        </el-tag>
       </div>
 
       <div>
         <span v-permission="['editor']" class="permission-alert">
           Only
-          <vp-tag class="permission-tag" size="small">editor</vp-tag> can see this
+          <el-tag class="permission-tag" size="small">editor</el-tag> can see this
         </span>
-        <vp-tag v-permission="['editor']" class="permission-sourceCode" type="info">
+        <el-tag v-permission="['editor']" class="permission-sourceCode" type="info">
           v-permission="['editor']"
-        </vp-tag>
+        </el-tag>
       </div>
 
       <div>
         <span v-permission="['admin','editor']" class="permission-alert">
           Both
-          <vp-tag class="permission-tag" size="small">admin</vp-tag> and
-          <vp-tag class="permission-tag" size="small">editor</vp-tag> can see this
+          <el-tag class="permission-tag" size="small">admin</el-tag> and
+          <el-tag class="permission-tag" size="small">editor</el-tag> can see this
         </span>
-        <vp-tag v-permission="['admin','editor']" class="permission-sourceCode" type="info">
+        <el-tag v-permission="['admin','editor']" class="permission-sourceCode" type="info">
           v-permission="['admin','editor']"
-        </vp-tag>
+        </el-tag>
       </div>
     </div>
 
     <div :key="'checkPermission'+key" style="margin-top:60px;">
       <aside>
-        In some cases, using v-permission will have no effect. For example: Vortex-Pc's Tab component or el-table-column and other scenes that dynamically render dom. You can only do this with v-if.
+        In some cases, using v-permission will have no effect. For example: Element-UI's Tab component or el-table-column and other scenes that dynamically render dom. You can only do this with v-if.
         <br> e.g.
       </aside>
 
-      <vp-tabs type="border-card" style="width:550px;">
-        <vp-tab-pane v-if="checkPermission(['admin'])" label="Admin">
+      <el-tabs type="border-card" style="width:550px;">
+        <el-tab-pane v-if="checkPermission(['admin'])" label="Admin">
           Admin can see this
-          <vp-tag class="permission-sourceCode" type="info">
+          <el-tag class="permission-sourceCode" type="info">
             v-if="checkPermission(['admin'])"
-          </vp-tag>
-        </vp-tab-pane>
+          </el-tag>
+        </el-tab-pane>
 
-        <vp-tab-pane v-if="checkPermission(['editor'])" label="Editor">
+        <el-tab-pane v-if="checkPermission(['editor'])" label="Editor">
           Editor can see this
-          <vp-tag class="permission-sourceCode" type="info">
+          <el-tag class="permission-sourceCode" type="info">
             v-if="checkPermission(['editor'])"
-          </vp-tag>
-        </vp-tab-pane>
+          </el-tag>
+        </el-tab-pane>
 
-        <vp-tab-pane v-if="checkPermission(['admin','editor'])" label="Admin-OR-Editor">
+        <el-tab-pane v-if="checkPermission(['admin','editor'])" label="Admin-OR-Editor">
           Both admin or editor can see this
-          <vp-tag class="permission-sourceCode" type="info">
+          <el-tag class="permission-sourceCode" type="info">
             v-if="checkPermission(['admin','editor'])"
-          </vp-tag>
-        </vp-tab-pane>
-      </vp-tabs>
+          </el-tag>
+        </el-tab-pane>
+      </el-tabs>
     </div>
   </div>
 </template>

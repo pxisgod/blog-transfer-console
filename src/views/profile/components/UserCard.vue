@@ -1,5 +1,5 @@
 <template>
-  <vp-card style="margin-bottom:20px;">
+  <el-card style="margin-bottom:20px;">
     <div slot="header" class="clearfix">
       <span>About me</span>
     </div>
@@ -32,24 +32,24 @@
         <div class="user-bio-section-body">
           <div class="progress-item">
             <span>Vue</span>
-            <vp-progress :percentage="70" />
+            <el-progress :percentage="70" />
           </div>
           <div class="progress-item">
             <span>JavaScript</span>
-            <vp-progress :percentage="18" />
+            <el-progress :percentage="18" />
           </div>
           <div class="progress-item">
             <span>Css</span>
-            <vp-progress :percentage="12" />
+            <el-progress :percentage="12" />
           </div>
           <div class="progress-item">
             <span>ESLint</span>
-            <vp-progress :percentage="100" status="success" />
+            <el-progress :percentage="100" status="success" />
           </div>
         </div>
       </div>
     </div>
-  </vp-card>
+  </el-card>
 </template>
 
 <script>
@@ -101,7 +101,7 @@ export default {
   .box-social {
     padding-top: 30px;
 
-    .vp-table {
+    .el-table {
       border-top: 1px solid #dfe6ec;
     }
   }

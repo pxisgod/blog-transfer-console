@@ -1,10 +1,10 @@
 <template>
   <div class="upload-container">
-    <vp-button :style="{background:color,borderColor:color}" icon="vp-icon-upload" size="mini" type="primary" @click=" dialogVisible=true">
+    <el-button :style="{background:color,borderColor:color}" icon="el-icon-upload" size="mini" type="primary" @click=" dialogVisible=true">
       upload
-    </vp-button>
-    <vp-dialog :visible.sync="dialogVisible">
-      <vp-upload
+    </el-button>
+    <el-dialog :visible.sync="dialogVisible">
+      <el-upload
         :multiple="true"
         :file-list="fileList"
         :show-file-list="true"
@@ -15,17 +15,17 @@
         action="https://httpbin.org/post"
         list-type="picture-card"
       >
-        <vp-button size="small" type="primary">
+        <el-button size="small" type="primary">
           Click upload
-        </vp-button>
-      </vp-upload>
-      <vp-button @click="dialogVisible = false">
+        </el-button>
+      </el-upload>
+      <el-button @click="dialogVisible = false">
         Cancel
-      </vp-button>
-      <vp-button type="primary" @click="handleSubmit">
+      </el-button>
+      <el-button type="primary" @click="handleSubmit">
         Confirm
-      </vp-button>
-    </vp-dialog>
+      </el-button>
+    </el-dialog>
   </div>
 </template>
 
@@ -113,7 +113,7 @@ export default {
 <style lang="scss" scoped>
 .editor-slide-upload {
   margin-bottom: 20px;
-  /deep/ .vp-upload--picture-card {
+  /deep/ .el-upload--picture-card {
     width: 100%;
   }
 }

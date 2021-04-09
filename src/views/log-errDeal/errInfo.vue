@@ -2,96 +2,96 @@
   <div class="app-container">
     <div class="filter-container">
       <system-select v-model="listQuery.logStatInfo.systemCode" class="filter-item"></system-select>
-      <vp-input clearable v-model="listQuery.logStatInfo.logCode" placeholder="日志编码" style="width: 200px;" class="filter-item"></vp-input>
-      <vp-select v-model="listQuery.logStatInfo.logType" class="filter-item" placeholder="日志类型" clearable>
-        <vp-option v-for="item in logType" :key="item.key" :label="item.display_name" :value="item.key" />
-      </vp-select>
-      <vp-select v-model="myTimeType" class="filter-item" placeholder="时间类型选择" @change="timeTypeChange()">
-        <vp-option v-for="item in timeType" :key="item.key" :label="item.display_name" :value="item.key" />
-      </vp-select>
-      <vp-select  v-model="myStatPeriod" class="filter-item" placeholder="时间段选择" v-if="chooseTimePeriod" clearable >
-        <vp-option v-for="item in statPeriod" :key="item.key" :label="item.display_name" :value="item.key" />
-      </vp-select>
-      <vp-date-picker placeholder="开始时间" class="filter-item" type="datetime" v-model="listQuery.logStatInfo.beginTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></vp-date-picker>
-      <vp-date-picker placeholder="结束时间" class="filter-item" type="datetime" v-model="listQuery.logStatInfo.endTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></vp-date-picker>
-      <vp-button v-waves class="filter-item" type="primary" icon="vp-icon-search" @click="handleQuery">
+      <el-input clearable v-model="listQuery.logStatInfo.logCode" placeholder="日志编码" style="width: 200px;" class="filter-item"></el-input>
+      <el-select v-model="listQuery.logStatInfo.logType" class="filter-item" placeholder="日志类型" clearable>
+        <el-option v-for="item in logType" :key="item.key" :label="item.display_name" :value="item.key" />
+      </el-select>
+      <el-select v-model="myTimeType" class="filter-item" placeholder="时间类型选择" @change="timeTypeChange()">
+        <el-option v-for="item in timeType" :key="item.key" :label="item.display_name" :value="item.key" />
+      </el-select>
+      <el-select  v-model="myStatPeriod" class="filter-item" placeholder="时间段选择" v-if="chooseTimePeriod" clearable >
+        <el-option v-for="item in statPeriod" :key="item.key" :label="item.display_name" :value="item.key" />
+      </el-select>
+      <el-date-picker placeholder="开始时间" class="filter-item" type="datetime" v-model="listQuery.logStatInfo.beginTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
+      <el-date-picker placeholder="结束时间" class="filter-item" type="datetime" v-model="listQuery.logStatInfo.endTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
+      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleQuery">
         搜索
-      </vp-button>
+      </el-button>
     </div>
-    <vp-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%;">
-      <vp-table-column label="日志ID" align="center" width="300px">
+    <el-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%;">
+      <el-table-column label="日志ID" align="center" width="300px">
         <template slot-scope="scope">
           <span>{{ scope.row.logInfoId }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="中心编码" align="center">
+      </el-table-column>
+      <el-table-column label="中心编码" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.systemCode}}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="中心名称" align="center">
+      </el-table-column>
+      <el-table-column label="中心名称" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.systemName }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="日志类型">
+      </el-table-column>
+      <el-table-column label="日志类型">
         <template slot-scope="{row}">
           <span>{{ row.logType | logTypeFilter }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="日志编码">
+      </el-table-column>
+      <el-table-column label="日志编码">
         <template slot-scope="{row}">
-          <vp-tag>{{ row.logCode }}</vp-tag>
+          <el-tag>{{ row.logCode }}</el-tag>
         </template>
-      </vp-table-column>
-      <vp-table-column label="服务名" align="center">
+      </el-table-column>
+      <el-table-column label="服务名" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.serverName }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="IP" width="100px">
+      </el-table-column>
+      <el-table-column label="IP" width="100px">
         <template slot-scope="scope">
           <a>{{ scope.row.ip }}</a>
         </template>
-      </vp-table-column>
-      <vp-table-column label="异常位置">
+      </el-table-column>
+      <el-table-column label="异常位置">
         <template slot-scope="scope">
           <a>{{ scope.row.errPos |errPosTypeFilter }}</a>
         </template>
-      </vp-table-column>
-      <!--<vp-table-column label="异常类名" width="150px">
+      </el-table-column>
+      <!--<el-table-column label="异常类名" width="150px">
         <template slot-scope="scope">
           <a>{{ scope.row.errClass }}</a>
         </template>
-      </vp-table-column>-->
-      <vp-table-column label="时间" width="160px">
+      </el-table-column>-->
+      <el-table-column label="时间" width="160px">
         <template slot-scope="scope">
           <a>{{ scope.row.sendTime |formatDate}}</a>
         </template>
-      </vp-table-column>
-      <vp-table-column label="处理状态">
+      </el-table-column>
+      <el-table-column label="处理状态">
         <template slot-scope="scope">
           <a>{{ scope.row.dealState|dealStatTypeFilter }}</a>
         </template>
-      </vp-table-column>
-      <vp-table-column label="操作" align="center" width="280px" class-name="small-padding fixed-width" v-if="roles.includes('admin')">
+      </el-table-column>
+      <el-table-column label="操作" align="center" width="280px" class-name="small-padding fixed-width" v-if="roles.includes('admin')">
         <template slot-scope="{row}">
-          <vp-popover
+          <el-popover
             placement="bottom"
             width="1000"
             trigger="click">
-            <vp-button type="primary" size="mini" slot="reference">异常堆栈</vp-button>
+            <el-button type="primary" size="mini" slot="reference">异常堆栈</el-button>
             <span>异常类:</span><br>
             <span>{{row.errClass}}</span><br><br>
             <span>异常堆栈:</span><br>
             <span>{{row.errMsg}}</span>
-          </vp-popover>
-          <vp-button type="primary" size="mini" @click="handleDeal(row)" v-if="row.dealState==0">
+          </el-popover>
+          <el-button type="primary" size="mini" @click="handleDeal(row)" v-if="row.dealState==0">
             失败处理
-          </vp-button>
+          </el-button>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.pageRequest.page" :limit.sync="listQuery.pageRequest.size" @pagination="getList" />
   </div>
 </template>
@@ -403,7 +403,7 @@ export default {
 </script>
 
 <style>
-.vp-button.vp-button--primary.vp-button--mini.vp-dropdown__caret-button {
+.el-button.el-button--primary.el-button--mini.el-dropdown__caret-button {
   width: auto;
 }
 </style>

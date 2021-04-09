@@ -1,22 +1,22 @@
 <template>
-  <vp-dropdown :show-timeout="100" trigger="click">
-    <vp-button plain>
+  <el-dropdown :show-timeout="100" trigger="click">
+    <el-button plain>
       {{ !comment_disabled?'Comment: opened':'Comment: closed' }}
-      <i class="vp-icon-caret-bottom vp-icon--right" />
-    </vp-button>
-    <vp-dropdown-menu slot="dropdown" class="no-padding">
-      <vp-dropdown-item>
-        <vp-radio-group v-model="comment_disabled" style="padding: 10px;">
-          <vp-radio :label="true">
+      <i class="el-icon-caret-bottom el-icon--right" />
+    </el-button>
+    <el-dropdown-menu slot="dropdown" class="no-padding">
+      <el-dropdown-item>
+        <el-radio-group v-model="comment_disabled" style="padding: 10px;">
+          <el-radio :label="true">
             Close comment
-          </vp-radio>
-          <vp-radio :label="false">
+          </el-radio>
+          <el-radio :label="false">
             Open comment
-          </vp-radio>
-        </vp-radio-group>
-      </vp-dropdown-item>
-    </vp-dropdown-menu>
-  </vp-dropdown>
+          </el-radio>
+        </el-radio-group>
+      </el-dropdown-item>
+    </el-dropdown-menu>
+  </el-dropdown>
 </template>
 
 <script>

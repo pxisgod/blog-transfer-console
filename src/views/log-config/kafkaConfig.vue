@@ -1,86 +1,86 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <vp-input v-model="listQuery.centerName" placeholder="中心编码" style="width: 300px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <vp-button v-waves class="filter-item" type="primary" icon="vp-icon-search" @click="handleFilter">
+      <el-input v-model="listQuery.centerName" placeholder="中心编码" style="width: 300px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         搜索
-      </vp-button>
-      <vp-button class="filter-item" style="margin-left: 10px;" type="primary" icon="vp-icon-edit" @click="handleCreate">
+      </el-button>
+      <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
         添加KAFKA配置
-      </vp-button>
+      </el-button>
     </div>
 
-    <vp-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%;">
-      <vp-table-column label="中心编码" align="center">
+    <el-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%;">
+      <el-table-column label="中心编码" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.centerName }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="KAFKA-BROKER地址" align="center">
+      </el-table-column>
+      <el-table-column label="KAFKA-BROKER地址" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.kfkAddr }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="KAFKA主题">
+      </el-table-column>
+      <el-table-column label="KAFKA主题">
         <template slot-scope="{row}">
-          <vp-tag>{{ row.topic }}</vp-tag>
+          <el-tag>{{ row.topic }}</el-tag>
         </template>
-      </vp-table-column>
-      <vp-table-column label="KAFKA-ZK">
+      </el-table-column>
+      <el-table-column label="KAFKA-ZK">
         <template slot-scope="scope">
           <a>{{ scope.row.zk }}</a>
         </template>
-      </vp-table-column>
-      <vp-table-column label="操作" align="center" width="180px" class-name="small-padding fixed-width">
+      </el-table-column>
+      <el-table-column label="操作" align="center" width="180px" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <vp-button type="primary" size="mini" @click="handleUpdate(row)">
+          <el-button type="primary" size="mini" @click="handleUpdate(row)">
             编辑
-          </vp-button>
-          <vp-button size="mini" type="danger" @click="handleDelete(row)">
+          </el-button>
+          <el-button size="mini" type="danger" @click="handleDelete(row)">
             删除
-          </vp-button>
+          </el-button>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
 
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
 
-    <vp-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <vp-form ref="dataForm" :rules="rules" :model="temp" label-position="right" label-width="180px" style="width: 400px; margin-left:50px;">
-        <vp-form-item label="KAFKA-BROKER" prop="storageCode">
-          <vp-input v-model="temp.kfkAddr" />
-        </vp-form-item>
-        <vp-form-item label="KAFKA-主题" prop="storageName">
-          <vp-input v-model="temp.topic" />
-        </vp-form-item>
-        <vp-form-item label="中心编码">
-          <vp-input v-model="temp.centerName" />
-        </vp-form-item>
-        <vp-form-item label="KAFKA-ZK" prop="zk">
-          <vp-input v-model="temp.zk" />
-        </vp-form-item>
-        <vp-form-item label="参数1" prop="param1">
-          <vp-input v-model="temp.param1" />
-        </vp-form-item>
-        <vp-form-item label="参数2" prop="param2">
-          <vp-input v-model="temp.param2" />
-        </vp-form-item>
-        <vp-form-item label="参数3" prop="param3">
-          <vp-input v-model="temp.param3" />
-        </vp-form-item>
-        <vp-form-item label="参数4" prop="param4">
-          <vp-input v-model="temp.param4" />
-        </vp-form-item>
-      </vp-form>
+    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
+      <el-form ref="dataForm" :rules="rules" :model="temp" label-position="right" label-width="180px" style="width: 400px; margin-left:50px;">
+        <el-form-item label="KAFKA-BROKER" prop="storageCode">
+          <el-input v-model="temp.kfkAddr" />
+        </el-form-item>
+        <el-form-item label="KAFKA-主题" prop="storageName">
+          <el-input v-model="temp.topic" />
+        </el-form-item>
+        <el-form-item label="中心编码">
+          <el-input v-model="temp.centerName" />
+        </el-form-item>
+        <el-form-item label="KAFKA-ZK" prop="zk">
+          <el-input v-model="temp.zk" />
+        </el-form-item>
+        <el-form-item label="参数1" prop="param1">
+          <el-input v-model="temp.param1" />
+        </el-form-item>
+        <el-form-item label="参数2" prop="param2">
+          <el-input v-model="temp.param2" />
+        </el-form-item>
+        <el-form-item label="参数3" prop="param3">
+          <el-input v-model="temp.param3" />
+        </el-form-item>
+        <el-form-item label="参数4" prop="param4">
+          <el-input v-model="temp.param4" />
+        </el-form-item>
+      </el-form>
       <div slot="footer" class="dialog-footer">
-        <vp-button @click="dialogFormVisible = false">
+        <el-button @click="dialogFormVisible = false">
           取消
-        </vp-button>
-        <vp-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
+        </el-button>
+        <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
           保存
-        </vp-button>
+        </el-button>
       </div>
-    </vp-dialog>
+    </el-dialog>
 
   </div>
 </template>

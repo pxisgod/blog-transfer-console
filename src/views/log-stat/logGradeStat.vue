@@ -2,67 +2,67 @@
   <div class="app-container">
     <div class="filter-container">
       <system-select v-model="listQuery.logStatInfo.systemCode" class="filter-item"></system-select>
-      <vp-input clearable v-model="listQuery.logStatInfo.logCode" placeholder="日志编码" style="width: 200px;" class="filter-item"></vp-input>
-      <vp-select v-model="listQuery.logStatInfo.logType" class="filter-item" placeholder="日志类型" clearable>
-        <vp-option v-for="item in logType" :key="item.key" :label="item.display_name" :value="item.key" />
-      </vp-select>
-      <vp-select v-model="myTimeType" class="filter-item" placeholder="时间类型选择" @change="timeTypeChange()">
-        <vp-option v-for="item in timeType" :key="item.key" :label="item.display_name" :value="item.key" />
-      </vp-select>
-      <vp-select  v-model="myStatPeriod" class="filter-item" placeholder="时间段选择" v-if="chooseTimePeriod" clearable >
-        <vp-option v-for="item in statPeriod" :key="item.key" :label="item.display_name" :value="item.key" />
-      </vp-select>
-      <vp-date-picker placeholder="开始时间" class="filter-item" type="datetime" v-model="listQuery.logStatInfo.beginTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></vp-date-picker>
-      <vp-date-picker placeholder="结束时间" class="filter-item" type="datetime" v-model="listQuery.logStatInfo.endTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></vp-date-picker>
-      <vp-button v-waves class="filter-item" type="primary" icon="vp-icon-search" @click="handleQuery">
+      <el-input clearable v-model="listQuery.logStatInfo.logCode" placeholder="日志编码" style="width: 200px;" class="filter-item"></el-input>
+      <el-select v-model="listQuery.logStatInfo.logType" class="filter-item" placeholder="日志类型" clearable>
+        <el-option v-for="item in logType" :key="item.key" :label="item.display_name" :value="item.key" />
+      </el-select>
+      <el-select v-model="myTimeType" class="filter-item" placeholder="时间类型选择" @change="timeTypeChange()">
+        <el-option v-for="item in timeType" :key="item.key" :label="item.display_name" :value="item.key" />
+      </el-select>
+      <el-select  v-model="myStatPeriod" class="filter-item" placeholder="时间段选择" v-if="chooseTimePeriod" clearable >
+        <el-option v-for="item in statPeriod" :key="item.key" :label="item.display_name" :value="item.key" />
+      </el-select>
+      <el-date-picker placeholder="开始时间" class="filter-item" type="datetime" v-model="listQuery.logStatInfo.beginTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
+      <el-date-picker placeholder="结束时间" class="filter-item" type="datetime" v-model="listQuery.logStatInfo.endTime" style="width: 250px;" v-if="chooseTimeRange" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
+      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleQuery">
         搜索
-      </vp-button>
+      </el-button>
     </div>
-    <vp-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%;">
-      <vp-table-column label="中心编码" align="center">
+    <el-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%;">
+      <el-table-column label="中心编码" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.systemCode }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="中心名称" align="center">
+      </el-table-column>
+      <el-table-column label="中心名称" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.systemName }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="日志类型">
+      </el-table-column>
+      <el-table-column label="日志类型">
         <template slot-scope="{row}">
           <span>{{ row.logType | logTypeFilter }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="日志编码">
+      </el-table-column>
+      <el-table-column label="日志编码">
         <template slot-scope="{row}">
-          <vp-tag>{{ row.logCode }}</vp-tag>
+          <el-tag>{{ row.logCode }}</el-tag>
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column label="日志总量" align="center">
+      <el-table-column label="日志总量" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.logNum }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="评分">
+      </el-table-column>
+      <el-table-column label="评分">
         <template slot-scope="scope">
           <a>{{ scope.row.avgGrade}}</a>
         </template>
-      </vp-table-column>
-      <vp-table-column label="告警阈值">
+      </el-table-column>
+      <el-table-column label="告警阈值">
         <template slot-scope="scope">
           <a>{{ scope.row.threshold}}</a>
         </template>
-      </vp-table-column>
-      <vp-table-column label="操作" align="center" width="280px" class-name="small-padding fixed-width">
+      </el-table-column>
+      <el-table-column label="操作" align="center" width="280px" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <vp-button type="primary" size="mini" @click="handleDetail(row)">
+          <el-button type="primary" size="mini" @click="handleDetail(row)">
             详情
-          </vp-button>
+          </el-button>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.pageRequest.page" :limit.sync="listQuery.pageRequest.size" @pagination="getList" />
   </div>
 </template>
@@ -334,7 +334,7 @@ export default {
 </script>
 
 <style>
-.vp-button.vp-button--primary.vp-button--mini.vp-dropdown__caret-button {
+.el-button.el-button--primary.el-button--mini.el-dropdown__caret-button {
   width: auto;
 }
 </style>

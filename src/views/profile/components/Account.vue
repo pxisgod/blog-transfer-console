@@ -1,15 +1,15 @@
 <template>
-  <vp-form>
-    <vp-form-item label="Name">
-      <vp-input v-model.trim="user.name" />
-    </vp-form-item>
-    <vp-form-item label="Email">
-      <vp-input v-model.trim="user.email" />
-    </vp-form-item>
-    <vp-form-item>
-      <vp-button type="primary" @click="submit">Update</vp-button>
-    </vp-form-item>
-  </vp-form>
+  <el-form>
+    <el-form-item label="Name">
+      <el-input v-model.trim="user.name" />
+    </el-form-item>
+    <el-form-item label="Email">
+      <el-input v-model.trim="user.email" />
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="submit">Update</el-button>
+    </el-form-item>
+  </el-form>
 </template>
 
 <script>

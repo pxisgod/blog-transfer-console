@@ -197,12 +197,6 @@ export const asyncRoutes = [
         meta: { title: "Back To Top" }
       },
       {
-        path: "drag-dialog",
-        component: "views/components-demo/drag-dialog",
-        name: "DragDialogDemo",
-        meta: { title: "Drag Dialog" }
-      },
-      {
         path: "drag-select",
         component: "views/components-demo/drag-select",
         name: "DragSelectDemo",

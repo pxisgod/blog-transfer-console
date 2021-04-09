@@ -1,12 +1,12 @@
 <template>
-  <vp-select v-model="value"  filterable placeholder="中心名称" :disabled=disabled  :clearable=clearable|clearTypeFilter >
-    <vp-option
+  <el-select v-model="value"  filterable placeholder="中心名称" :disabled=disabled  :clearable=clearable|clearTypeFilter >
+    <el-option
       v-for="item in options"
       :key="item.systemCode"
       :label="item.systemName"
       :value="item.systemCode">
-    </vp-option>
-  </vp-select>
+    </el-option>
+  </el-select>
 </template>
 
 <script>

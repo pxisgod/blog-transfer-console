@@ -1,17 +1,17 @@
 <template>
-  <vp-dropdown :hide-on-click="false" :show-timeout="100" trigger="click">
-    <vp-button plain>
+  <el-dropdown :hide-on-click="false" :show-timeout="100" trigger="click">
+    <el-button plain>
       Platfroms({{ platforms.length }})
-      <i class="vp-icon-caret-bottom vp-icon--right" />
-    </vp-button>
-    <vp-dropdown-menu slot="dropdown" class="no-border">
-      <vp-checkbox-group v-model="platforms" style="padding: 5px 15px;">
-        <vp-checkbox v-for="item in platformsOptions" :key="item.key" :label="item.key">
+      <i class="el-icon-caret-bottom el-icon--right" />
+    </el-button>
+    <el-dropdown-menu slot="dropdown" class="no-border">
+      <el-checkbox-group v-model="platforms" style="padding: 5px 15px;">
+        <el-checkbox v-for="item in platformsOptions" :key="item.key" :label="item.key">
           {{ item.name }}
-        </vp-checkbox>
-      </vp-checkbox-group>
-    </vp-dropdown-menu>
-  </vp-dropdown>
+        </el-checkbox>
+      </el-checkbox-group>
+    </el-dropdown-menu>
+  </el-dropdown>
 </template>
 
 <script>

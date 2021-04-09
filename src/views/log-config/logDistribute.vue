@@ -2,81 +2,81 @@
   <div class="app-container">
     <page-head @back="goBack" content="分发配置"></page-head>
     <div class="filter-container">
-      <vp-form ref="form" :model="baseInfo" label-width="80px">
-        <vp-row :gutter="20">
-          <vp-col :span="8">
-            <vp-form-item label="">
-              <vp-input v-model="baseInfo.logCode" :disabled="true"></vp-input>
-            </vp-form-item>
-          </vp-col>
-          <vp-col :span="8">
-            <vp-form-item label="">
-              <vp-button v-waves class="filter-item" type="primary" icon="vp-icon-search" @click="handleCreate">
+      <el-form ref="form" :model="baseInfo" label-width="80px">
+        <el-row :gutter="20">
+          <el-col :span="8">
+            <el-form-item label="">
+              <el-input v-model="baseInfo.logCode" :disabled="true"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="">
+              <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleCreate">
                 添加分发配置
-              </vp-button>
-            </vp-form-item>
-          </vp-col>
-        </vp-row>
-      </vp-form>
+              </el-button>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
     </div>
 
 
-    <vp-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row>
-      <vp-table-column label="日志编码" align="center">
+    <el-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row>
+      <el-table-column label="日志编码" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.logCode }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="分发日志系统" align="center">
+      </el-table-column>
+      <el-table-column label="分发日志系统" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.distributeSystemCode }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="分发日志编码" align="center">
+      </el-table-column>
+      <el-table-column label="分发日志编码" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.distributeLogCode }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="操作" align="center" width="300px" class-name="small-padding fixed-width">
+      </el-table-column>
+      <el-table-column label="操作" align="center" width="300px" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <vp-button size="mini" type="danger" @click="handleDelete(row)" v-if="roles.includes('admin')">
+          <el-button size="mini" type="danger" @click="handleDelete(row)" v-if="roles.includes('admin')">
             删除
-          </vp-button>
-          <vp-dropdown size="mini" type="primary" style="margin-left:10px;">
-            <vp-button type="primary" size="mini">
+          </el-button>
+          <el-dropdown size="mini" type="primary" style="margin-left:10px;">
+            <el-button type="primary" size="mini">
               更多
-            </vp-button>
-            <vp-dropdown-menu slot="dropdown">
-              <vp-dropdown-item @click.native="handleMapper(row)">映射配置</vp-dropdown-item>
-              <vp-dropdown-item @click.native="handleFilter(row)">过滤配置</vp-dropdown-item>
-            </vp-dropdown-menu>
-          </vp-dropdown>
+            </el-button>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="handleMapper(row)">映射配置</el-dropdown-item>
+              <el-dropdown-item @click.native="handleFilter(row)">过滤配置</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
 
-    <vp-dialog title="添加分发配置" :visible.sync="dialogFormVisible">
-      <vp-form ref="dataForm" :rules="rules" :model="temp" label-position="right" label-width="120px"
+    <el-dialog title="添加分发配置" :visible.sync="dialogFormVisible">
+      <el-form ref="dataForm" :rules="rules" :model="temp" label-position="right" label-width="120px"
                style="width: 400px; margin-left:50px;">
-        <vp-form-item label="日志编码" prop="logCode">
-          <vp-input v-model="temp.logCode" disabled/>
-        </vp-form-item>
-        <vp-form-item label="分发中心编码" prop="systemCode">
-          <vp-input v-model="temp.distributeSystemCode"/>
-        </vp-form-item>
-        <vp-form-item label="分发日志编码" prop="systemCode">
-          <vp-input v-model="temp.distributeLogCode"/>
-        </vp-form-item>
-      </vp-form>
+        <el-form-item label="日志编码" prop="logCode">
+          <el-input v-model="temp.logCode" disabled/>
+        </el-form-item>
+        <el-form-item label="分发中心编码" prop="systemCode">
+          <el-input v-model="temp.distributeSystemCode"/>
+        </el-form-item>
+        <el-form-item label="分发日志编码" prop="systemCode">
+          <el-input v-model="temp.distributeLogCode"/>
+        </el-form-item>
+      </el-form>
       <div slot="footer" class="dialog-footer">
-        <vp-button @click="dialogFormVisible = false">
+        <el-button @click="dialogFormVisible = false">
           取消
-        </vp-button>
-        <vp-button type="primary" @click="saveData">
+        </el-button>
+        <el-button type="primary" @click="saveData">
           保存
-        </vp-button>
+        </el-button>
       </div>
-    </vp-dialog>
+    </el-dialog>
   </div>
 </template>
 
@@ -237,7 +237,7 @@ export default {
 </script>
 
 <style>
-.vp-button.vp-button--primary.vp-button--mini.vp-dropdown__caret-button {
+.el-button.el-button--primary.el-button--mini.el-dropdown__caret-button {
   width: auto;
 }
 </style>

@@ -3,39 +3,39 @@
     <page-head @back="goBack" content="同步刷新状态"></page-head>
     <div v-loading="!show" element-loading-text="数据加载中..." :style="!show ? 'height: 500px' : 'height: 100%'" class="app-container">
       <div v-if="show">
-        <vp-card class="box-card" shadow="hover">
+        <el-card class="box-card" shadow="hover">
           <div class="log-page-head" style="color: #666;font-size: 16px;">
             <span>
               系统：{{ info.systemCode }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
             <span>
               刷新状态：
-              <vp-tag :type=" info.refreshState | tagType" effect="dark">
+              <el-tag :type=" info.refreshState | tagType" effect="dark">
                 {{ info.refreshState | state }}
-              </vp-tag>
+              </el-tag>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
             <span>
               最近刷新时间：{{ getTime(info.refreshTime) }}
             </span>
-            <i class="vp-icon-refresh" style="float:right;margin-right:10px;" @click="getFlushState"/>
+            <i class="el-icon-refresh" style="float:right;margin-right:10px;" @click="getFlushState"/>
           </div>
-        </vp-card>
-        <vp-card class="box-card" shadow="hover">
+        </el-card>
+        <el-card class="box-card" shadow="hover">
           <div slot="header" class="clearfix">
             <span style="font-weight: bold;color: #666;font-size: 15px;">详细情况</span>
           </div>
-          <vp-collapse>
+          <el-collapse>
             <template v-for="(item,i) in  info.refreshResultList">
-              <vp-collapse-item :name="i" :key="item.logCode">
+              <el-collapse-item :name="i" :key="item.logCode">
                 <template slot="title">
                   <div class="log-collapse-item">
                     <h3 class="log-item-title">日志编码：{{item.logCode}}</h3>
                     <div class="log-item-info">
                       状态：
-                      <vp-tag :type=" item.logRefreshState | tagType" effect="dark">
+                      <el-tag :type=" item.logRefreshState | tagType" effect="dark">
                         {{ item.logRefreshState | state }}
-                      </vp-tag>
+                      </el-tag>
                     </div>
                     <div class="log-item-info" style="flex-basis: 500px;">
                       key：
@@ -49,10 +49,10 @@
 										{{item.errMessage}}
 									</code>
                 </div>
-              </vp-collapse-item>
+              </el-collapse-item>
             </template>
-          </vp-collapse>
-        </vp-card>
+          </el-collapse>
+        </el-card>
       </div>
     </div>
 

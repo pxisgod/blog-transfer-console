@@ -1,6 +1,6 @@
 <template>
   <div class="singleImageUpload2 upload-container">
-    <vp-upload
+    <el-upload
       :data="dataObj"
       :multiple="false"
       :show-file-list="false"
@@ -9,16 +9,16 @@
       drag
       action="https://httpbin.org/post"
     >
-      <i class="vp-icon-upload" />
-      <div class="vp-upload__text">
+      <i class="el-icon-upload" />
+      <div class="el-upload__text">
         Drag或<em>点击上传</em>
       </div>
-    </vp-upload>
+    </el-upload>
     <div v-show="imageUrl.length>0" class="image-preview">
       <div v-show="imageUrl.length>1" class="image-preview-wrapper">
         <img :src="imageUrl">
         <div class="image-preview-action">
-          <i class="vp-icon-delete" @click="rmImage" />
+          <i class="el-icon-delete" @click="rmImage" />
         </div>
       </div>
     </div>
@@ -118,7 +118,7 @@ export default {
       cursor: pointer;
       text-align: center;
       line-height: 200px;
-      .vp-icon-delete {
+      .el-icon-delete {
         font-size: 36px;
       }
     }

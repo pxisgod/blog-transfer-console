@@ -117,10 +117,10 @@
       <div>placeholder</div>
       <div>placeholder</div>
     </div>
-    <!-- you can add vortex-pc's tooltip -->
-    <vp-tooltip placement="top" content="tooltip">
+    <!-- you can add element-ui's tooltip -->
+    <el-tooltip placement="top" content="tooltip">
       <back-to-top :custom-style="myBackToTopStyle" :visibility-height="300" :back-position="50" transition-name="fade" />
-    </vp-tooltip>
+    </el-tooltip>
   </div>
 </template>
 

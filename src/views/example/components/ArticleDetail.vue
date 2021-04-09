@@ -1,49 +1,49 @@
 <template>
   <div class="createPost-container">
-    <vp-form ref="postForm" :model="postForm" :rules="rules" class="form-container">
+    <el-form ref="postForm" :model="postForm" :rules="rules" class="form-container">
 
       <sticky :z-index="10" :class-name="'sub-navbar '+postForm.status">
         <CommentDropdown v-model="postForm.comment_disabled" />
         <PlatformDropdown v-model="postForm.platforms" />
         <SourceUrlDropdown v-model="postForm.source_uri" />
-        <vp-button v-loading="loading" style="margin-left: 10px;" type="success" @click="submitForm">
+        <el-button v-loading="loading" style="margin-left: 10px;" type="success" @click="submitForm">
           Publish
-        </vp-button>
-        <vp-button v-loading="loading" type="warning" @click="draftForm">
+        </el-button>
+        <el-button v-loading="loading" type="warning" @click="draftForm">
           Draft
-        </vp-button>
+        </el-button>
       </sticky>
 
       <div class="createPost-main-container">
-        <vp-row>
+        <el-row>
           <Warning />
 
-          <vp-col :span="24">
-            <vp-form-item style="margin-bottom: 40px;" prop="title">
+          <el-col :span="24">
+            <el-form-item style="margin-bottom: 40px;" prop="title">
               <MDinput v-model="postForm.title" :maxlength="100" name="name" required>
                 Title
               </MDinput>
-            </vp-form-item>
+            </el-form-item>
 
             <div class="postInfo-container">
-              <vp-row>
-                <vp-col :span="8">
-                  <vp-form-item label-width="60px" label="Author:" class="postInfo-container-item">
-                    <vp-select v-model="postForm.author" :remote-method="getRemoteUserList" filterable default-first-option remote placeholder="Search user">
-                      <vp-option v-for="(item,index) in userListOptions" :key="item+index" :label="item" :value="item" />
-                    </vp-select>
-                  </vp-form-item>
-                </vp-col>
+              <el-row>
+                <el-col :span="8">
+                  <el-form-item label-width="60px" label="Author:" class="postInfo-container-item">
+                    <el-select v-model="postForm.author" :remote-method="getRemoteUserList" filterable default-first-option remote placeholder="Search user">
+                      <el-option v-for="(item,index) in userListOptions" :key="item+index" :label="item" :value="item" />
+                    </el-select>
+                  </el-form-item>
+                </el-col>
 
-                <vp-col :span="10">
-                  <vp-form-item label-width="120px" label="Publish Time:" class="postInfo-container-item">
-                    <vp-date-picker v-model="displayTime" type="datetime" format="yyyy-MM-dd HH:mm:ss" placeholder="Select date and time" />
-                  </vp-form-item>
-                </vp-col>
+                <el-col :span="10">
+                  <el-form-item label-width="120px" label="Publish Time:" class="postInfo-container-item">
+                    <el-date-picker v-model="displayTime" type="datetime" format="yyyy-MM-dd HH:mm:ss" placeholder="Select date and time" />
+                  </el-form-item>
+                </el-col>
 
-                <vp-col :span="6">
-                  <vp-form-item label-width="90px" label="Importance:" class="postInfo-container-item">
-                    <vp-rate
+                <el-col :span="6">
+                  <el-form-item label-width="90px" label="Importance:" class="postInfo-container-item">
+                    <el-rate
                       v-model="postForm.importance"
                       :max="3"
                       :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
@@ -51,27 +51,27 @@
                       :high-threshold="3"
                       style="display:inline-block"
                     />
-                  </vp-form-item>
-                </vp-col>
-              </vp-row>
+                  </el-form-item>
+                </el-col>
+              </el-row>
             </div>
-          </vp-col>
-        </vp-row>
+          </el-col>
+        </el-row>
 
-        <vp-form-item style="margin-bottom: 40px;" label-width="70px" label="Summary:">
-          <vp-input v-model="postForm.content_short" :rows="1" type="textarea" class="article-textarea" autosize placeholder="Please enter the content" />
+        <el-form-item style="margin-bottom: 40px;" label-width="70px" label="Summary:">
+          <el-input v-model="postForm.content_short" :rows="1" type="textarea" class="article-textarea" autosize placeholder="Please enter the content" />
           <span v-show="contentShortLength" class="word-counter">{{ contentShortLength }}words</span>
-        </vp-form-item>
+        </el-form-item>
 
-        <vp-form-item prop="content" style="margin-bottom: 30px;">
+        <el-form-item prop="content" style="margin-bottom: 30px;">
           <Tinymce ref="editor" v-model="postForm.content" :height="400" />
-        </vp-form-item>
+        </el-form-item>
 
-        <vp-form-item prop="image_uri" style="margin-bottom: 30px;">
+        <el-form-item prop="image_uri" style="margin-bottom: 30px;">
           <Upload v-model="postForm.image_uri" />
-        </vp-form-item>
+        </el-form-item>
       </div>
-    </vp-form>
+    </el-form>
   </div>
 </template>
 

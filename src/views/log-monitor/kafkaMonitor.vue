@@ -1,11 +1,11 @@
 <template>
-  <vp-row class="app-container" :gutter="32">
-    <vp-col :xs="24" :sm="24" :lg="6">
-      <vp-card class="box-card">
+  <el-row class="app-container" :gutter="32">
+    <el-col :xs="24" :sm="24" :lg="6">
+      <el-card class="box-card">
         <div slot="header" class="clearfix">
           <span style="line-height:36px;">kafka偏移量</span>
         </div>
-        <vp-card class="box-card" shadow="never" v-for="(item,i) in offset" :key="i">
+        <el-card class="box-card" shadow="never" v-for="(item,i) in offset" :key="i">
           <h4 style="color:#409EFF;margin-block-start: 0px;margin-block-end:0px;">分区{{item.partition}}</h4>
           <div class="list" style="line-height:26px;">
             <div><i class="list-point bg-green"></i>committedOffsets:{{item.committedOffsets}}</div>
@@ -13,25 +13,25 @@
             <div><i class="list-point bg-orange"></i>latestOffsets:{{item.latestOffsets}}</div>
             <div><i class="list-point bg-red"></i>lag:{{item.lag}}</div>
           </div>
-        </vp-card>
-      </vp-card>
-    </vp-col>
-    <vp-col :xs="24" :sm="24" :lg="18">
-      <vp-card class="box-card">
+        </el-card>
+      </el-card>
+    </el-col>
+    <el-col :xs="24" :sm="24" :lg="18">
+      <el-card class="box-card">
         <div slot="header" class="clearfix">
           <span style="line-height:36px;">Kafka处理速度变化曲线</span>
-          <vp-date-picker v-model="dateRange" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" style="float: right;">
-          </vp-date-picker>
-          <vp-select v-model="period" class="filter-item" placeholder="" clearable>
-            <vp-option v-for="item in periodType" :key="item.key" :label="item.display_name" :value="item.key" />
-          </vp-select>
+          <el-date-picker v-model="dateRange" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" style="float: right;">
+          </el-date-picker>
+          <el-select v-model="period" class="filter-item" placeholder="" clearable>
+            <el-option v-for="item in periodType" :key="item.key" :label="item.display_name" :value="item.key" />
+          </el-select>
         </div>
         <div class="chart-wrapper">
           <lineChart :chartData="trendData"></lineChart>
         </div>
-      </vp-card>
-    </vp-col>
-  </vp-row>
+      </el-card>
+    </el-col>
+  </el-row>
 </template>
 
 <script>

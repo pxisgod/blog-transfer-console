@@ -1,19 +1,19 @@
 <template>
   <div class="app-container">
-    <vp-tabs v-model="activeName">
-      <vp-tab-pane label="use clipboard  directly" name="directly">
-        <vp-input v-model="inputData" placeholder="Please input" style="width:400px;max-width:100%;" />
-        <vp-button type="primary" icon="document" @click="handleCopy(inputData,$event)">
+    <el-tabs v-model="activeName">
+      <el-tab-pane label="use clipboard  directly" name="directly">
+        <el-input v-model="inputData" placeholder="Please input" style="width:400px;max-width:100%;" />
+        <el-button type="primary" icon="document" @click="handleCopy(inputData,$event)">
           copy
-        </vp-button>
-      </vp-tab-pane>
-      <vp-tab-pane label="use clipboard by v-directive" name="v-directive">
-        <vp-input v-model="inputData" placeholder="Please input" style="width:400px;max-width:100%;" />
-        <vp-button v-clipboard:copy="inputData" v-clipboard:success="clipboardSuccess" type="primary" icon="document">
+        </el-button>
+      </el-tab-pane>
+      <el-tab-pane label="use clipboard by v-directive" name="v-directive">
+        <el-input v-model="inputData" placeholder="Please input" style="width:400px;max-width:100%;" />
+        <el-button v-clipboard:copy="inputData" v-clipboard:success="clipboardSuccess" type="primary" icon="document">
           copy
-        </vp-button>
-      </vp-tab-pane>
-    </vp-tabs>
+        </el-button>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 

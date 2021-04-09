@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
 
-    <vp-button :loading="downloadLoading" style="margin-bottom:20px" type="primary" icon="document" @click="handleDownload">Export</vp-button>
+    <el-button :loading="downloadLoading" style="margin-bottom:20px" type="primary" icon="document" @click="handleDownload">Export</el-button>
 
-    <vp-table
+    <el-table
       ref="multipleTable"
       v-loading="listLoading"
       :data="list"
@@ -12,35 +12,35 @@
       fit
       highlight-current-row
     >
-      <vp-table-column align="center" label="Id" width="95">
+      <el-table-column align="center" label="Id" width="95">
         <template slot-scope="scope">
           {{ scope.$index }}
         </template>
-      </vp-table-column>
-      <vp-table-column label="Main Information" align="center">
-        <vp-table-column label="Title">
+      </el-table-column>
+      <el-table-column label="Main Information" align="center">
+        <el-table-column label="Title">
           <template slot-scope="scope">
             {{ scope.row.title }}
           </template>
-        </vp-table-column>
-        <vp-table-column label="Author" width="110" align="center">
+        </el-table-column>
+        <el-table-column label="Author" width="110" align="center">
           <template slot-scope="scope">
-            <vp-tag>{{ scope.row.author }}</vp-tag>
+            <el-tag>{{ scope.row.author }}</el-tag>
           </template>
-        </vp-table-column>
-        <vp-table-column label="Readings" width="115" align="center">
+        </el-table-column>
+        <el-table-column label="Readings" width="115" align="center">
           <template slot-scope="scope">
             {{ scope.row.pageviews }}
           </template>
-        </vp-table-column>
-      </vp-table-column>
-      <vp-table-column align="center" label="Date" width="220">
+        </el-table-column>
+      </el-table-column>
+      <el-table-column align="center" label="Date" width="220">
         <template slot-scope="scope">
-          <i class="vp-icon-time" />
+          <i class="el-icon-time" />
           <span>{{ scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
 
   </div>
 </template>

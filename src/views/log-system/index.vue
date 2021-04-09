@@ -1,37 +1,37 @@
 <template>
   <div>
     <Crud ref="curd" :columns="columns" :config="config" :getData="getList" :add="add"></Crud>
-    <vp-dialog :title="dialog.title" :visible.sync="dialog.visible" width="450px">
-      <vp-form ref="dataForm" :rules="rules" :model="infoForm" label-position="right" label-width="80px">
-        <vp-form-item label="中心编码" prop="systemCode">
-          <vp-input v-if="dialog.title=='新增'" v-model="infoForm.systemCode" />
-          <vp-input v-else v-model="infoForm.systemCode" :disabled="true"/>
-        </vp-form-item>
-        <vp-form-item label="中心名称" prop="systemName">
-          <vp-select filterable clearable
+    <el-dialog :title="dialog.title" :visible.sync="dialog.visible" width="450px">
+      <el-form ref="dataForm" :rules="rules" :model="infoForm" label-position="right" label-width="80px">
+        <el-form-item label="中心编码" prop="systemCode">
+          <el-input v-if="dialog.title=='新增'" v-model="infoForm.systemCode" />
+          <el-input v-else v-model="infoForm.systemCode" :disabled="true"/>
+        </el-form-item>
+        <el-form-item label="中心名称" prop="systemName">
+          <el-select filterable clearable
                      v-model="infoForm.systemName"  placeholder="中心名称" @change="systemChange"
                      @input.native="systemTextChange" ref="searchSelect" >
-            <vp-option
+            <el-option
               v-for="item in systemList"
               :key="item.systemName"
               :label="item.systemName"
               :value="item.systemName">
-            </vp-option>
-          </vp-select>
-        </vp-form-item>
-        <vp-form-item label="中心ID" prop="systemId" >
-          <vp-input v-model="infoForm.systemId" :disabled="true"/>
-        </vp-form-item>
-      </vp-form>
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="中心ID" prop="systemId" >
+          <el-input v-model="infoForm.systemId" :disabled="true"/>
+        </el-form-item>
+      </el-form>
       <div slot="footer" class="dialog-footer">
-        <vp-button @click="dialog.visible = false">
+        <el-button @click="dialog.visible = false">
           取消
-        </vp-button>
-        <vp-button type="primary" @click="dialog.title==='新增'?createData():updateData()">
+        </el-button>
+        <el-button type="primary" @click="dialog.title==='新增'?createData():updateData()">
           保存
-        </vp-button>
+        </el-button>
       </div>
-    </vp-dialog>
+    </el-dialog>
   </div>
 </template>
 

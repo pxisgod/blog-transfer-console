@@ -1,18 +1,18 @@
 <template>
-  <vp-input v-if="!fieldType||fieldType=='input'" v-model="value" :placeholder="placeholder"></vp-input>
-  <vp-select v-else-if="fieldType=='select'" v-model="value" :placeholder="placeholder">
+  <el-input v-if="!fieldType||fieldType=='input'" v-model="value" :placeholder="placeholder"></el-input>
+  <el-select v-else-if="fieldType=='select'" v-model="value" :placeholder="placeholder">
     <template v-for="(op,ii) in conf.options">
-      <vp-option v-bind="op" :key="ii"></vp-option>
+      <el-option v-bind="op" :key="ii"></el-option>
     </template>
-  </vp-select>
-  <vp-input v-else-if="fieldType=='textarea'" type="textarea" v-model="value" v-bind="conf" :placeholder="placeholder">
-  </vp-input>
-  <vp-time-select v-else-if="fieldType=='timeselect'" v-model="value" v-bind="conf" :placeholder="placeholder">
-  </vp-time-select>
-  <vp-time-picker v-else-if="fieldType=='timepicker'" v-model="value" v-bind="conf" :placeholder="placeholder">
-  </vp-time-picker>
-  <vp-date-picker v-else-if="fieldType=='datepicker'" v-model="value" v-bind="conf" :placeholder="placeholder">
-  </vp-date-picker>
+  </el-select>
+  <el-input v-else-if="fieldType=='textarea'" type="textarea" v-model="value" v-bind="conf" :placeholder="placeholder">
+  </el-input>
+  <el-time-select v-else-if="fieldType=='timeselect'" v-model="value" v-bind="conf" :placeholder="placeholder">
+  </el-time-select>
+  <el-time-picker v-else-if="fieldType=='timepicker'" v-model="value" v-bind="conf" :placeholder="placeholder">
+  </el-time-picker>
+  <el-date-picker v-else-if="fieldType=='datepicker'" v-model="value" v-bind="conf" :placeholder="placeholder">
+  </el-date-picker>
 
 </template>
 

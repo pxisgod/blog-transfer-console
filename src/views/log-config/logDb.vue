@@ -2,105 +2,105 @@
   <div class="app-container" style="margin:24px 65px;">
     <page-head @back="goBack" content="库配置"></page-head>
     <div class="filter-container">
-      <vp-form ref="form" :model="baseInfo" label-width="80px">
-        <vp-row :gutter="20">
-          <vp-col :span="6">
-            <vp-form-item label="">
-              <vp-input v-model="baseInfo.logCode" :disabled="true"></vp-input>
-            </vp-form-item>
-          </vp-col>
-          <vp-col :span="6">
-            <vp-form-item label="是否分库" >
-              <vp-select v-model="baseInfo.isSplit" class="filter-item" placeholder="Please select" v-if="roles.includes('admin')">
-                <vp-option v-for="item in splitStat" :key="item.key" :label="item.display_name" :value="item.key" />
-              </vp-select>
-              <vp-select v-model="baseInfo.isSplit" class="filter-item" placeholder="Please select" v-else disabled>
-                <vp-option v-for="item in splitStat" :key="item.key" :label="item.display_name" :value="item.key" />
-              </vp-select>
-            </vp-form-item>
-          </vp-col>
-          <vp-col :span="6">
-            <vp-form-item label="分库字段">
-							<vp-input v-if="baseInfo.isSplit==='T' && roles.includes('admin') " v-model="baseInfo.splitColumn"></vp-input>
-              <vp-input v-else v-model="baseInfo.splitColumn" disabled></vp-input>
-            </vp-form-item>
-          </vp-col>
-        </vp-row>
-      </vp-form>
+      <el-form ref="form" :model="baseInfo" label-width="80px">
+        <el-row :gutter="20">
+          <el-col :span="6">
+            <el-form-item label="">
+              <el-input v-model="baseInfo.logCode" :disabled="true"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="6">
+            <el-form-item label="是否分库" >
+              <el-select v-model="baseInfo.isSplit" class="filter-item" placeholder="Please select" v-if="roles.includes('admin')">
+                <el-option v-for="item in splitStat" :key="item.key" :label="item.display_name" :value="item.key" />
+              </el-select>
+              <el-select v-model="baseInfo.isSplit" class="filter-item" placeholder="Please select" v-else disabled>
+                <el-option v-for="item in splitStat" :key="item.key" :label="item.display_name" :value="item.key" />
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="6">
+            <el-form-item label="分库字段">
+							<el-input v-if="baseInfo.isSplit==='T' && roles.includes('admin') " v-model="baseInfo.splitColumn"></el-input>
+              <el-input v-else v-model="baseInfo.splitColumn" disabled></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
 
     </div>
-    <vp-button v-waves class="filter-item" type="primary" size="small" plain @click="handleAdd" v-if="roles.includes('admin')">
+    <el-button v-waves class="filter-item" type="primary" size="small" plain @click="handleAdd" v-if="roles.includes('admin')">
       添加库配置
-    </vp-button>
-    <vp-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
-      <vp-table-column align="center" label="分库编码">
+    </el-button>
+    <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
+      <el-table-column align="center" label="分库编码">
         <template slot-scope="scope">
           <template v-if="scope.row.edit">
-            <vp-input v-if="scope.row.isFromSaved" v-model="scope.row.splitDbCode" disabled></vp-input>
-            <vp-input v-else v-model="scope.row.splitDbCode" ></vp-input>
+            <el-input v-if="scope.row.isFromSaved" v-model="scope.row.splitDbCode" disabled></el-input>
+            <el-input v-else v-model="scope.row.splitDbCode" ></el-input>
           </template>
           <span v-else>{{ scope.row.splitDbCode}}</span>
         </template>
 
-      </vp-table-column>
-      <vp-table-column align="center" label="分库策略">
+      </el-table-column>
+      <el-table-column align="center" label="分库策略">
         <template slot-scope="scope">
           <template v-if="scope.row.edit">
-            <vp-select v-model="scope.row.splitStrategy" class="filter-item" placeholder="Please select" @visible-change="getPickableSplitStrategy()">
-              <vp-option v-for="item in pickableSplitDbType" :key="item.key" :label="item.display_name" :value="item.key" />
-            </vp-select>
+            <el-select v-model="scope.row.splitStrategy" class="filter-item" placeholder="Please select" @visible-change="getPickableSplitStrategy()">
+              <el-option v-for="item in pickableSplitDbType" :key="item.key" :label="item.display_name" :value="item.key" />
+            </el-select>
           </template>
           <span v-else>{{ scope.row.splitStrategy | splitDbFilter }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column align="center" label="分库字段值">
+      </el-table-column>
+      <el-table-column align="center" label="分库字段值">
         <template slot-scope="scope">
           <template v-if="scope.row.edit">
-            <vp-input v-if="scope.row.splitStrategy==='DEFAULT_STRATEGY'" disabled v-model="scope.row.splitColumnValue"></vp-input>
-            <vp-input v-else v-model="scope.row.splitColumnValue"></vp-input>
+            <el-input v-if="scope.row.splitStrategy==='DEFAULT_STRATEGY'" disabled v-model="scope.row.splitColumnValue"></el-input>
+            <el-input v-else v-model="scope.row.splitColumnValue"></el-input>
           </template>
           <span v-else>{{ scope.row.splitColumnValue}}</span>
         </template>
 
-      </vp-table-column>
-      <vp-table-column align="center" label="存储编码">
+      </el-table-column>
+      <el-table-column align="center" label="存储编码">
         <template slot-scope="scope">
           <template v-if="scope.row.edit">
-            <vp-select v-model="scope.row.storageCode" class="filter-item" placeholder="Please select" v-on:visible-change="getPickableStorageList()">
-              <vp-option v-for="item in pickableStorageList" :key="item.storageCode" :label="item.storageName" :value="item.storageCode">
+            <el-select v-model="scope.row.storageCode" class="filter-item" placeholder="Please select" v-on:visible-change="getPickableStorageList()">
+              <el-option v-for="item in pickableStorageList" :key="item.storageCode" :label="item.storageName" :value="item.storageCode">
                 <span style="float: left">{{ item.storageName }}</span>
                 <span style="float: right; color: #8492a6; font-size: 13px">{{ item.storageCode }}</span>
-              </vp-option>
-            </vp-select>
+              </el-option>
+            </el-select>
           </template>
           <span v-else>{{ scope.row.storageCode }}</span>
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column align="center" label="操作" width="300" v-if="roles.includes('admin')">
+      <el-table-column align="center" label="操作" width="300" v-if="roles.includes('admin')">
         <template slot-scope="scope">
-          <vp-button v-if="scope.row.edit" size="mini" icon="vp-icon-circle-cancel-outline" @click="cancelEdit(scope.row,scope.$index)">
+          <el-button v-if="scope.row.edit" size="mini" icon="el-icon-circle-cancel-outline" @click="cancelEdit(scope.row,scope.$index)">
             Cancel
-          </vp-button>
-          <vp-button v-if="scope.row.edit" type="success" size="mini" icon="vp-icon-circle-check-outline" @click="confirmEdit(scope.row)">
+          </el-button>
+          <el-button v-if="scope.row.edit" type="success" size="mini" icon="el-icon-circle-check-outline" @click="confirmEdit(scope.row)">
             Ok
-          </vp-button>
-          <vp-button v-else type="primary" size="mini" icon="vp-icon-edit" @click="handleEdit(scope.row,scope.$index)">
+          </el-button>
+          <el-button v-else type="primary" size="mini" icon="el-icon-edit" @click="handleEdit(scope.row,scope.$index)">
             修改
-          </vp-button>
-          <vp-button type="danger" size="mini" icon="vp-icon-circle-close-outline" @click="handleDel(scope.$index)">
+          </el-button>
+          <el-button type="danger" size="mini" icon="el-icon-circle-close-outline" @click="handleDel(scope.$index)">
             删除
-          </vp-button>
+          </el-button>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
     <div style="padding:24px 0;">
-      <vp-button v-waves class="filter-item" type="primary" @click="handleSave" v-if="roles.includes('admin')">
+      <el-button v-waves class="filter-item" type="primary" @click="handleSave" v-if="roles.includes('admin')">
         保存
-      </vp-button>
-      <vp-button v-waves class="filter-item" type="primary" @click="goBack">
+      </el-button>
+      <el-button v-waves class="filter-item" type="primary" @click="goBack">
         返回
-      </vp-button>
+      </el-button>
     </div>
   </div>
 </template>

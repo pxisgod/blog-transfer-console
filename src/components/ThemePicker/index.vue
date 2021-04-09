@@ -1,5 +1,5 @@
 <template>
-  <vp-color-picker
+  <el-color-picker
     v-model="theme"
     :predefine="['#409EFF', '#1890ff', '#304156','#212121','#11a983', '#13c2c2', '#6959CD', '#f5222d', ]"
     class="theme-picker"
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-const version = require("vortex-pc/package.json").version; // vortex-pc version from node_modules
+const version = require("element-ui/package.json").version; // element-ui version from node_modules
 const ORIGINAL_THEME = "#409EFF"; // default color
 
 export default {
@@ -42,7 +42,7 @@ export default {
         customClass: "theme-message",
         type: "success",
         duration: 0,
-        iconClass: "vp-icon-loading"
+        iconClass: "el-icon-loading"
       });
 
       const getHandler = (variable, id) => {
@@ -177,13 +177,13 @@ export default {
   z-index: 99999 !important;
 }
 
-.theme-picker .vp-color-picker__trigger {
+.theme-picker .el-color-picker__trigger {
   height: 26px !important;
   width: 26px !important;
   padding: 2px;
 }
 
-.theme-picker-dropdown .vp-color-dropdown__link-btn {
+.theme-picker-dropdown .el-color-dropdown__link-btn {
   display: none;
 }
 </style>

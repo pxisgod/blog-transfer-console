@@ -1,19 +1,19 @@
 <template>
-  <vp-dropdown :show-timeout="100" trigger="click">
-    <vp-button plain>
+  <el-dropdown :show-timeout="100" trigger="click">
+    <el-button plain>
       Link
-      <i class="vp-icon-caret-bottom vp-icon--right" />
-    </vp-button>
-    <vp-dropdown-menu slot="dropdown" class="no-padding no-border" style="width:400px">
-      <vp-form-item label-width="0px" style="margin-bottom: 0px" prop="source_uri">
-        <vp-input v-model="source_uri" placeholder="Please enter the content">
+      <i class="el-icon-caret-bottom el-icon--right" />
+    </el-button>
+    <el-dropdown-menu slot="dropdown" class="no-padding no-border" style="width:400px">
+      <el-form-item label-width="0px" style="margin-bottom: 0px" prop="source_uri">
+        <el-input v-model="source_uri" placeholder="Please enter the content">
           <template slot="prepend">
             URL
           </template>
-        </vp-input>
-      </vp-form-item>
-    </vp-dropdown-menu>
-  </vp-dropdown>
+        </el-input>
+      </el-form-item>
+    </el-dropdown-menu>
+  </el-dropdown>
 </template>
 
 <script>

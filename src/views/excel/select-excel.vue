@@ -1,13 +1,13 @@
 <template>
   <div class="app-container">
-    <vp-input v-model="filename" placeholder="Please enter the file name (default excel-list)" style="width:350px;" prefix-icon="vp-icon-document" />
-    <vp-button :loading="downloadLoading" style="margin-bottom:20px" type="primary" icon="document" @click="handleDownload">
+    <el-input v-model="filename" placeholder="Please enter the file name (default excel-list)" style="width:350px;" prefix-icon="el-icon-document" />
+    <el-button :loading="downloadLoading" style="margin-bottom:20px" type="primary" icon="document" @click="handleDownload">
       Export Selected Items
-    </vp-button>
+    </el-button>
     <a href="https://panjiachen.github.io/vue-element-admin-site/feature/component/excel.html" target="_blank" style="margin-left:15px;">
-      <vp-tag type="info">Documentation</vp-tag>
+      <el-tag type="info">Documentation</el-tag>
     </a>
-    <vp-table
+    <el-table
       ref="multipleTable"
       v-loading="listLoading"
       :data="list"
@@ -17,34 +17,34 @@
       highlight-current-row
       @selection-change="handleSelectionChange"
     >
-      <vp-table-column type="selection" align="center" />
-      <vp-table-column align="center" label="Id" width="95">
+      <el-table-column type="selection" align="center" />
+      <el-table-column align="center" label="Id" width="95">
         <template slot-scope="scope">
           {{ scope.$index }}
         </template>
-      </vp-table-column>
-      <vp-table-column label="Title">
+      </el-table-column>
+      <el-table-column label="Title">
         <template slot-scope="scope">
           {{ scope.row.title }}
         </template>
-      </vp-table-column>
-      <vp-table-column label="Author" width="110" align="center">
+      </el-table-column>
+      <el-table-column label="Author" width="110" align="center">
         <template slot-scope="scope">
-          <vp-tag>{{ scope.row.author }}</vp-tag>
+          <el-tag>{{ scope.row.author }}</el-tag>
         </template>
-      </vp-table-column>
-      <vp-table-column label="Readings" width="115" align="center">
+      </el-table-column>
+      <el-table-column label="Readings" width="115" align="center">
         <template slot-scope="scope">
           {{ scope.row.pageviews }}
         </template>
-      </vp-table-column>
-      <vp-table-column align="center" label="PDate" width="220">
+      </el-table-column>
+      <el-table-column align="center" label="PDate" width="220">
         <template slot-scope="scope">
-          <i class="vp-icon-time" />
+          <i class="el-icon-time" />
           <span>{{ scope.row.display_time }}</span>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 

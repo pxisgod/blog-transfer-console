@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss">
 // fix css style bug in open el-dialog
-.vp-popup-parent--hidden {
+.el-popup-parent--hidden {
   .fixed-header {
     padding-right: 15px;
   }

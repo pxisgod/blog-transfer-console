@@ -1,5 +1,5 @@
 import axios from "axios";
-import { MessageBox, Message } from "vortex-pc";
+import { MessageBox, Message } from "element-ui";
 import store from "@/store";
 import { getToken } from "@/utils/auth";
 
@@ -8,8 +8,7 @@ if (process.env.NODE_ENV == "local") {
   //axios.defaults.baseURL = "http://localhost:8080";
 } else {
   if (process.env.NODE_ENV == "production") {
-    axios.defaults.baseURL =
-      "http://localhost:8080";
+    axios.defaults.baseURL = "http://localhost:8080";
   } else {
     if (process.env.NODE_ENV == "development") {
       axios.defaults.baseURL = "http://localhost:8080";
@@ -25,7 +24,6 @@ const service = axios.create({
   //timeout : 6000
   //headers: { "X-Requested-With": "XMLHttpRequest", Accept: "*/*" },
 });
-
 
 // request interceptor
 service.interceptors.request.use(
@@ -64,11 +62,11 @@ service.interceptors.response.use(
 
     // if the custom code is not 20000, it is judged as an error.
     if (res.code != 200) {
-        Message({
-          message: res.message || "Error",
-          type: "error",
-          duration: 5 * 1000
-        });
+      Message({
+        message: res.message || "Error",
+        type: "error",
+        duration: 5 * 1000
+      });
       return Promise.reject(new Error(res.message || "Error"));
     } else {
       return res;

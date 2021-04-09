@@ -4,10 +4,10 @@
       <a href="https://panjiachen.github.io/vue-element-admin-site/guide/advanced/icon.html" target="_blank">Add and use
       </a>
     </aside>
-    <vp-tabs type="border-card">
-      <vp-tab-pane label="Icons">
+    <el-tabs type="border-card">
+      <el-tab-pane label="Icons">
         <div v-for="item of svgIcons" :key="item" @click="handleClipboard(generateIconCode(item),$event)">
-          <vp-tooltip placement="top">
+          <el-tooltip placement="top">
             <div slot="content">
               {{ generateIconCode(item) }}
             </div>
@@ -15,23 +15,23 @@
               <svg-icon :icon-class="item" class-name="disabled" />
               <span>{{ item }}</span>
             </div>
-          </vp-tooltip>
+          </el-tooltip>
         </div>
-      </vp-tab-pane>
-      <vp-tab-pane label="Vortex-Pc Icons">
+      </el-tab-pane>
+      <el-tab-pane label="Element-UI Icons">
         <div v-for="item of elementIcons" :key="item" @click="handleClipboard(generateElementIconCode(item),$event)">
-          <vp-tooltip placement="top">
+          <el-tooltip placement="top">
             <div slot="content">
               {{ generateElementIconCode(item) }}
             </div>
             <div class="icon-item">
-              <i :class="'vp-icon-' + item" />
+              <i :class="'el-icon-' + item" />
               <span>{{ item }}</span>
             </div>
-          </vp-tooltip>
+          </el-tooltip>
         </div>
-      </vp-tab-pane>
-    </vp-tabs>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
@@ -53,7 +53,7 @@ export default {
       return `<svg-icon icon-class="${symbol}" />`;
     },
     generateElementIconCode(symbol) {
-      return `<i class="vp-icon-${symbol}" />`;
+      return `<i class="el-icon-${symbol}" />`;
     },
     handleClipboard(text, event) {
       clipboard(text, event);

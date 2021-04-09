@@ -3,168 +3,168 @@
     <div class="filter-container">
       <system-select v-model="listQuery.systemCode" class="filter-item"></system-select>
 
-      <vp-button v-waves class="filter-item" type="primary" icon="vp-icon-search" @click="handleFilter">
+      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         搜索
-      </vp-button>
-      <vp-button v-if="roles.includes('admin')" class="filter-item" style="margin-left: 10px;" type="primary" icon="vp-icon-edit" @click="handleCreate">
+      </el-button>
+      <el-button v-if="roles.includes('admin')" class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
         添加存储配置
-      </vp-button>
+      </el-button>
     </div>
 
-    <vp-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%;">
-      <vp-table-column label="存储编码"  align="center">
+    <el-table :key="tableKey" v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%;">
+      <el-table-column label="存储编码"  align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.storageCode }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="存储名称"  align="center">
+      </el-table-column>
+      <el-table-column label="存储名称"  align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.storageName }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="存储类型" align="center">
+      </el-table-column>
+      <el-table-column label="存储类型" align="center">
         <template slot-scope="{row}">
-          <vp-tag>{{ row.storageType | typeFilter }}</vp-tag>
+          <el-tag>{{ row.storageType | typeFilter }}</el-tag>
         </template>
-      </vp-table-column>
-      <vp-table-column label="中心编码"  align="center">
+      </el-table-column>
+      <el-table-column label="中心编码"  align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.systemCode }}</span>
         </template>
-      </vp-table-column>
-      <vp-table-column label="当前版本号" align="center" width="100px">
+      </el-table-column>
+      <el-table-column label="当前版本号" align="center" width="100px">
         <template slot-scope="scope">
           <a>{{ scope.row.version }}</a>
         </template>
-      </vp-table-column>
-      <vp-table-column label="操作" align="center" width="300px" class-name="small-padding fixed-width">
+      </el-table-column>
+      <el-table-column label="操作" align="center" width="300px" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <vp-button v-if="roles.includes('admin')" type="primary" size="mini" @click="handleUpdate(row)">
+          <el-button v-if="roles.includes('admin')" type="primary" size="mini" @click="handleUpdate(row)">
             编辑
-          </vp-button>
-          <vp-button v-else type="primary" size="mini" @click="handleView(row)">
+          </el-button>
+          <el-button v-else type="primary" size="mini" @click="handleView(row)">
             查看
-          </vp-button>
-          <vp-button size="mini" v-if="roles.includes('admin')" type="danger" @click="handleDelete(row.storageCode)">
+          </el-button>
+          <el-button size="mini" v-if="roles.includes('admin')" type="danger" @click="handleDelete(row.storageCode)">
             删除
-          </vp-button>
-          <vp-dropdown size="mini" type="primary" style="margin-left:10px;">
-            <vp-button type="primary" size="mini">
+          </el-button>
+          <el-dropdown size="mini" type="primary" style="margin-left:10px;">
+            <el-button type="primary" size="mini">
               更多
-            </vp-button>
-            <vp-dropdown-menu slot="dropdown">
-              <vp-dropdown-item @click.native="handleMaster(row)">主存储</vp-dropdown-item>
-              <vp-dropdown-item @click.native="handleBackup(row)">备用存储</vp-dropdown-item>
-            </vp-dropdown-menu>
-          </vp-dropdown>
+            </el-button>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="handleMaster(row)">主存储</el-dropdown-item>
+              <el-dropdown-item @click.native="handleBackup(row)">备用存储</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
 
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.pageRequest.page" :limit.sync="listQuery.pageRequest.size" @pagination="getList" />
 
-    <vp-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <vp-form ref="dataForm" :rules="rules" :model="temp" label-position="right" label-width="120px" style="width: 400px; margin-left:50px;">
-        <vp-form-item label="中心编码" prop="systemCode">
+    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
+      <el-form ref="dataForm" :rules="rules" :model="temp" label-position="right" label-width="120px" style="width: 400px; margin-left:50px;">
+        <el-form-item label="中心编码" prop="systemCode">
           <system-select v-if="dialogStatus==='update'||dialogStatus==='view'" disabled v-model="temp.systemCode"></system-select>
           <system-select v-else v-model="temp.systemCode"></system-select>
-        </vp-form-item>
-        <vp-form-item label="存储类型">
+        </el-form-item>
+        <el-form-item label="存储类型">
           <div v-if="dialogStatus=='update'||dialogStatus==='view'">
-            <vp-select v-model="temp.storageType" class="filter-item" placeholder="Please select" disabled>
-              <vp-option v-for="item in storageType" :key="item.key" :label="item.display_name" :value="item.key" />
-            </vp-select>
+            <el-select v-model="temp.storageType" class="filter-item" placeholder="Please select" disabled>
+              <el-option v-for="item in storageType" :key="item.key" :label="item.display_name" :value="item.key" />
+            </el-select>
           </div>
           <div v-else>
-            <vp-select v-model="temp.storageType" class="filter-item" placeholder="Please select">
-              <vp-option v-for="item in storageType" :key="item.key" :label="item.display_name" :value="item.key" />
-            </vp-select>
+            <el-select v-model="temp.storageType" class="filter-item" placeholder="Please select">
+              <el-option v-for="item in storageType" :key="item.key" :label="item.display_name" :value="item.key" />
+            </el-select>
           </div>
-        </vp-form-item>
-        <vp-form-item v-if="dialogStatus==='update'||dialogStatus==='view'" label="存储编码" prop="storageCode">
-          <vp-input v-model="temp.storageCode" disabled />
-        </vp-form-item>
-        <vp-form-item v-else label="存储编码" prop="storageCode">
-          <vp-input v-model="temp.storageCode" />
-        </vp-form-item>
-        <vp-form-item v-if="dialogStatus==='view'" label="存储名称" prop="storageName">
-          <vp-input v-model="temp.storageName" disabled/>
-        </vp-form-item>
-        <vp-form-item v-else label="存储名称" prop="storageName">
-          <vp-input v-model="temp.storageName" />
-        </vp-form-item>
+        </el-form-item>
+        <el-form-item v-if="dialogStatus==='update'||dialogStatus==='view'" label="存储编码" prop="storageCode">
+          <el-input v-model="temp.storageCode" disabled />
+        </el-form-item>
+        <el-form-item v-else label="存储编码" prop="storageCode">
+          <el-input v-model="temp.storageCode" />
+        </el-form-item>
+        <el-form-item v-if="dialogStatus==='view'" label="存储名称" prop="storageName">
+          <el-input v-model="temp.storageName" disabled/>
+        </el-form-item>
+        <el-form-item v-else label="存储名称" prop="storageName">
+          <el-input v-model="temp.storageName" />
+        </el-form-item>
         <div v-if="dialogStatus=='update'||dialogStatus==='view'">
-          <vp-form-item label="版本编号">
-            <vp-input v-model="temp.version" :disabled="true" />
-          </vp-form-item>
+          <el-form-item label="版本编号">
+            <el-input v-model="temp.version" :disabled="true" />
+          </el-form-item>
         </div>
-      </vp-form>
+      </el-form>
       <div slot="footer" class="dialog-footer">
-        <vp-button @click="dialogFormVisible = false">
+        <el-button @click="dialogFormVisible = false">
           取消
-        </vp-button>
-        <vp-button v-if="dialogStatus!='view'" type="primary" @click="dialogStatus==='create'?createData():updateData()">
+        </el-button>
+        <el-button v-if="dialogStatus!='view'" type="primary" @click="dialogStatus==='create'?createData():updateData()">
           保存
-        </vp-button>
+        </el-button>
       </div>
-    </vp-dialog>
+    </el-dialog>
 
-    <vp-dialog :title="masterMap[isMaster]" :visible.sync="storageDialogVisible">
-      <vp-form ref="storageDataForm" :rules="rules" :model="storageTemp" label-position="right" label-width="120px" style="width: 400px; margin-left:50px;">
-        <vp-form-item label="存储编码" prop="storageCode">
-          <vp-input v-model="storageTemp.storageCode" :disabled="true" />
-        </vp-form-item>
-        <vp-form-item  label="存储类型">
-          <vp-input :value="storageTemp.storageType | typeFilter" disabled/>
-        </vp-form-item>
-        <vp-form-item v-if="roles.includes('admin')" label="存储URL" prop="url">
-          <vp-input v-model="storageTemp.url" />
-        </vp-form-item>
-        <vp-form-item v-else label="存储URL" prop="url">
-          <vp-input v-model="storageTemp.url" disabled="true"/>
-        </vp-form-item>
-        <vp-form-item v-if="roles.includes('admin')" label="用户名" prop="username">
-          <vp-input v-model="storageTemp.username" />
-        </vp-form-item>
-        <vp-form-item v-else label="用户名" prop="username">
-          <vp-input v-model="storageTemp.username" disabled="true"/>
-        </vp-form-item>
-        <vp-form-item v-if="roles.includes('admin')" label="密码" prop="password">
-          <vp-input v-model="storageTemp.password" />
-        </vp-form-item>
-        <vp-form-item v-else label="密码" prop="password">
-          <vp-input v-model="storageTemp.password" disabled/>
-        </vp-form-item>
-        <vp-form-item  v-if="roles.includes('admin')" label="状态">
+    <el-dialog :title="masterMap[isMaster]" :visible.sync="storageDialogVisible">
+      <el-form ref="storageDataForm" :rules="rules" :model="storageTemp" label-position="right" label-width="120px" style="width: 400px; margin-left:50px;">
+        <el-form-item label="存储编码" prop="storageCode">
+          <el-input v-model="storageTemp.storageCode" :disabled="true" />
+        </el-form-item>
+        <el-form-item  label="存储类型">
+          <el-input :value="storageTemp.storageType | typeFilter" disabled/>
+        </el-form-item>
+        <el-form-item v-if="roles.includes('admin')" label="存储URL" prop="url">
+          <el-input v-model="storageTemp.url" />
+        </el-form-item>
+        <el-form-item v-else label="存储URL" prop="url">
+          <el-input v-model="storageTemp.url" disabled="true"/>
+        </el-form-item>
+        <el-form-item v-if="roles.includes('admin')" label="用户名" prop="username">
+          <el-input v-model="storageTemp.username" />
+        </el-form-item>
+        <el-form-item v-else label="用户名" prop="username">
+          <el-input v-model="storageTemp.username" disabled="true"/>
+        </el-form-item>
+        <el-form-item v-if="roles.includes('admin')" label="密码" prop="password">
+          <el-input v-model="storageTemp.password" />
+        </el-form-item>
+        <el-form-item v-else label="密码" prop="password">
+          <el-input v-model="storageTemp.password" disabled/>
+        </el-form-item>
+        <el-form-item  v-if="roles.includes('admin')" label="状态">
           <template v-if="isMaster=='T'">
-            <vp-select v-model="storageTemp.state" class="filter-item" placeholder="Please select">
-              <vp-option v-for="item in masterStateType" :key="item.key" :label="item.display_name" :value="item.key" />
-            </vp-select>
+            <el-select v-model="storageTemp.state" class="filter-item" placeholder="Please select">
+              <el-option v-for="item in masterStateType" :key="item.key" :label="item.display_name" :value="item.key" />
+            </el-select>
           </template>
           <template v-else="">
-            <vp-select v-model="storageTemp.state" class="filter-item" placeholder="Please select">
-              <vp-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key" />
-            </vp-select>
+            <el-select v-model="storageTemp.state" class="filter-item" placeholder="Please select">
+              <el-option v-for="item in stateType" :key="item.key" :label="item.display_name" :value="item.key" />
+            </el-select>
           </template>
-        </vp-form-item>
-        <vp-form-item v-else label="状态">
-          <vp-input :value="storageTemp.state|stateTypeFilter" disabled="true" />
-        </vp-form-item>
-        <vp-form-item>
-          <vp-button type="success" @click="testConnect(storageTemp)">
+        </el-form-item>
+        <el-form-item v-else label="状态">
+          <el-input :value="storageTemp.state|stateTypeFilter" disabled="true" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="success" @click="testConnect(storageTemp)">
             连接测试
-          </vp-button>
-        </vp-form-item>
-      </vp-form>
+          </el-button>
+        </el-form-item>
+      </el-form>
       <div slot="footer" class="dialog-footer">
-        <vp-button @click="storageDialogVisible = false">
+        <el-button @click="storageDialogVisible = false">
           取消
-        </vp-button>
-        <vp-button v-if="roles.includes('admin')" type="primary" @click="saveStorageParam()">
+        </el-button>
+        <el-button v-if="roles.includes('admin')" type="primary" @click="saveStorageParam()">
           保存
-        </vp-button>
+        </el-button>
       </div>
-    </vp-dialog>
+    </el-dialog>
 
   </div>
 </template>

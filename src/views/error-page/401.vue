@@ -1,10 +1,10 @@
 <template>
   <div class="errPage-container">
-    <vp-button icon="arrow-left" class="pan-back-btn" @click="back">
+    <el-button icon="arrow-left" class="pan-back-btn" @click="back">
       返回
-    </vp-button>
-    <vp-row>
-      <vp-col :span="12">
+    </el-button>
+    <el-row>
+      <el-col :span="12">
         <h1 class="text-jumbo text-ginormous">
           Oops!
         </h1>
@@ -23,14 +23,14 @@
           </li>
           <li><a href="#" @click.prevent="dialogVisible=true">点我看图</a></li>
         </ul>
-      </vp-col>
-      <vp-col :span="12">
+      </el-col>
+      <el-col :span="12">
         <img :src="errGif" width="313" height="428" alt="Girl has dropped her ice cream.">
-      </vp-col>
-    </vp-row>
-    <vp-dialog :visible.sync="dialogVisible" title="随便看">
+      </el-col>
+    </el-row>
+    <el-dialog :visible.sync="dialogVisible" title="随便看">
       <img :src="ewizardClap" class="pan-img">
-    </vp-dialog>
+    </el-dialog>
   </div>
 </template>
 

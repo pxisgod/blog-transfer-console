@@ -1,7 +1,7 @@
 <template>
   <div style="padding:30px;">
-    <vp-alert :closable="false" title="menu 1">
+    <el-alert :closable="false" title="menu 1">
       <router-view />
-    </vp-alert>
+    </el-alert>
   </div>
 </template>

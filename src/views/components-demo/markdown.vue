@@ -10,31 +10,31 @@
     </aside>
 
     <div class="editor-container">
-      <vp-tag class="tag-title">
+      <el-tag class="tag-title">
         Basic:
-      </vp-tag>
+      </el-tag>
       <markdown-editor v-model="content1" height="300px" />
     </div>
 
     <div class="editor-container">
-      <vp-tag class="tag-title">
+      <el-tag class="tag-title">
         Markdown Mode:
-      </vp-tag>
+      </el-tag>
       <markdown-editor ref="markdownEditor" v-model="content2" :options="{hideModeSwitch:true,previewStyle:'tab'}" height="200px" />
     </div>
 
     <div class="editor-container">
-      <vp-tag class="tag-title">
+      <el-tag class="tag-title">
         Customize Toolbar:
-      </vp-tag>
+      </el-tag>
       <markdown-editor v-model="content3" :options="{ toolbarItems: ['heading','bold','italic']}" />
     </div>
 
     <div class="editor-container">
-      <vp-tag class="tag-title">
+      <el-tag class="tag-title">
         I18n:
-      </vp-tag>
-      <vp-alert
+      </el-tag>
+      <el-alert
         :closable="false"
         title="You can change the language of the admin system to see the effect"
         type="success"
@@ -42,9 +42,9 @@
       <markdown-editor ref="markdownEditor" v-model="content4" :language="language" height="300px" />
     </div>
 
-    <vp-button style="margin-top:80px;" type="primary" icon="vp-icon-document" @click="getHtml">
+    <el-button style="margin-top:80px;" type="primary" icon="el-icon-document" @click="getHtml">
       Get HTML
-    </vp-button>
+    </el-button>
     <div v-html="html" />
   </div>
 </template>

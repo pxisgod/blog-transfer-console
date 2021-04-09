@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 
 import "normalize.css/normalize.css"; // a modern alternative to CSS resets
 
-import VortexPc from "vortex-pc";
+import Element from "element-ui";
 import "./styles/element-variables.scss";
 
 import "@/styles/index.scss"; // global css
@@ -32,8 +32,8 @@ import * as filters from "./filters"; // global filters
 //   mockXHR();
 // }
 
-Vue.use(VortexPc, {
-  size: Cookies.get("size") || "medium" // set vortex-pc default size
+Vue.use(Element, {
+  size: Cookies.get("size") || "medium" // set element-ui default size
 });
 
 // register global utility filters

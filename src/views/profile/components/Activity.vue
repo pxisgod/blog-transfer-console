@@ -16,7 +16,7 @@
       <ul class="list-inline">
         <li>
           <span class="link-black text-sm">
-            <i class="vp-icon-share" />
+            <i class="el-icon-share" />
             Share
           </span>
         </li>
@@ -44,7 +44,7 @@
       <ul class="list-inline">
         <li>
           <span class="link-black text-sm">
-            <i class="vp-icon-share" />
+            <i class="el-icon-share" />
             Share
           </span>
         </li>
@@ -63,14 +63,14 @@
         <span class="description">Posted 4 photos - 2 days ago</span>
       </div>
       <div class="user-images">
-        <vp-carousel :interval="6000" type="card" height="220px">
-          <vp-carousel-item v-for="item in carouselImages" :key="item">
+        <el-carousel :interval="6000" type="card" height="220px">
+          <el-carousel-item v-for="item in carouselImages" :key="item">
             <img :src="item+carouselPrefix" class="image">
-          </vp-carousel-item>
-        </vp-carousel>
+          </el-carousel-item>
+        </el-carousel>
       </div>
       <ul class="list-inline">
-        <li><span class="link-black text-sm"><i class="vp-icon-share" /> Share</span></li>
+        <li><span class="link-black text-sm"><i class="el-icon-share" /> Share</span></li>
         <li>
           <span class="link-black text-sm">
             <svg-icon icon-class="like" /> Like</span>

@@ -1,79 +1,79 @@
 <template>
   <div class="app-container">
-    <vp-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
-      <vp-table-column align="center" label="ID" width="80">
+    <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
+      <el-table-column align="center" label="ID" width="80">
         <template slot-scope="scope">
           <span>{{ scope.row.id }}</span>
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column width="180px" align="center" label="Date">
+      <el-table-column width="180px" align="center" label="Date">
         <template slot-scope="scope">
           <span>{{ scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column width="120px" align="center" label="Author">
+      <el-table-column width="120px" align="center" label="Author">
         <template slot-scope="scope">
           <span>{{ scope.row.author }}</span>
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column width="100px" label="Importance">
+      <el-table-column width="100px" label="Importance">
         <template slot-scope="scope">
           <svg-icon v-for="n in +scope.row.importance" :key="n" icon-class="star" class="meta-item__icon" />
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column class-name="status-col" label="Status" width="110">
+      <el-table-column class-name="status-col" label="Status" width="110">
         <template slot-scope="{row}">
-          <vp-tag :type="row.status | statusFilter">
+          <el-tag :type="row.status | statusFilter">
             {{ row.status }}
-          </vp-tag>
+          </el-tag>
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column min-width="300px" label="Title">
+      <el-table-column min-width="300px" label="Title">
         <template slot-scope="{row}">
           <template v-if="row.edit">
-            <vp-input v-model="row.title" class="edit-input" size="small" />
-            <vp-button
+            <el-input v-model="row.title" class="edit-input" size="small" />
+            <el-button
               class="cancel-btn"
               size="small"
-              icon="vp-icon-refresh"
+              icon="el-icon-refresh"
               type="warning"
               @click="cancelEdit(row)"
             >
               cancel
-            </vp-button>
+            </el-button>
           </template>
           <span v-else>{{ row.title }}</span>
         </template>
-      </vp-table-column>
+      </el-table-column>
 
-      <vp-table-column align="center" label="Actions" width="120">
+      <el-table-column align="center" label="Actions" width="120">
         <template slot-scope="{row}">
-          <vp-button
+          <el-button
             v-if="row.edit"
             type="success"
             size="small"
-            icon="vp-icon-circle-check-outline"
+            icon="el-icon-circle-check-outline"
             @click="confirmEdit(row)"
           >
             Ok
-          </vp-button>
-          <vp-button
+          </el-button>
+          <el-button
             v-else
             type="primary"
             size="small"
-            icon="vp-icon-edit"
+            icon="el-icon-edit"
             @click="row.edit=!row.edit"
           >
             Edit
-          </vp-button>
+          </el-button>
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 

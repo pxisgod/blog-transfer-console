@@ -1,27 +1,27 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <vp-checkbox-group v-model="checkboxVal">
-        <vp-checkbox label="apple">
+      <el-checkbox-group v-model="checkboxVal">
+        <el-checkbox label="apple">
           apple
-        </vp-checkbox>
-        <vp-checkbox label="banana">
+        </el-checkbox>
+        <el-checkbox label="banana">
           banana
-        </vp-checkbox>
-        <vp-checkbox label="orange">
+        </el-checkbox>
+        <el-checkbox label="orange">
           orange
-        </vp-checkbox>
-      </vp-checkbox-group>
+        </el-checkbox>
+      </el-checkbox-group>
     </div>
 
-    <vp-table :key="key" :data="tableData" border fit highlight-current-row style="width: 100%">
-      <vp-table-column prop="name" label="fruitName" width="180" />
-      <vp-table-column v-for="fruit in formThead" :key="fruit" :label="fruit">
+    <el-table :key="key" :data="tableData" border fit highlight-current-row style="width: 100%">
+      <el-table-column prop="name" label="fruitName" width="180" />
+      <el-table-column v-for="fruit in formThead" :key="fruit" :label="fruit">
         <template slot-scope="scope">
           {{ scope.row[fruit] }}
         </template>
-      </vp-table-column>
-    </vp-table>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 

@@ -4,14 +4,14 @@ import store from "@/store";
 import { getToken } from "@/utils/auth";
 
 if (process.env.NODE_ENV == "local") {
-  axios.defaults.baseURL = "/dev-api";
-  //axios.defaults.baseURL = "http://localhost:8080";
+  //axios.defaults.baseURL = "/dev-api";
+  axios.defaults.baseURL = "http://localhost:8080";
 } else {
   if (process.env.NODE_ENV == "production") {
     axios.defaults.baseURL = "http://localhost:8080";
   } else {
     if (process.env.NODE_ENV == "development") {
-      axios.defaults.baseURL = "http://localhost:8080";
+      axios.defaults.baseURL = "http://104.168.202.52:8080";
     }
   }
 }

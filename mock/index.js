@@ -7,6 +7,7 @@ import article from "./article";
 import search from "./remote-search";
 import logRoute from "./logRoute";
 import logSystem from "./logSystem";
+import blog from "./blog";
 
 const path = require("path");
 var glob = require("glob");
@@ -21,7 +22,8 @@ const mocks = [
   ...article,
   ...search,
   ...logRoute,
-  ...logSystem
+  ...logSystem,
+  ...blog
 ];
 
 // for front mock

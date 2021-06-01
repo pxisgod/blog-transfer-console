@@ -20,7 +20,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     // webpack4.0 新加优化策略
     minimizer: [
       new UglifyJsPlugin({
-        parallel: true, // 开启并行压缩，充分利用cpu
+        parallel: false, // 开启并行压缩，充分利用cpu
         extractComments: false, // 移除注释
         sourceMap: true,
         cache: true,

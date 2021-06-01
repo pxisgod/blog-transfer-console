@@ -18,7 +18,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
   mode: MODE, // 设定环境
   optimization: {
     // webpack4.0 新加优化策略
-    minimizer: [
+    /*minimizer: [
       new UglifyJsPlugin({
         parallel: false, // 开启并行压缩，充分利用cpu
         extractComments: false, // 移除注释
@@ -43,7 +43,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
       new CssCustomSourcemapUrlPlugin({
         append: config.build.sourcePath
       })
-    ],
+    ],*/
     splitChunks: {
       chunks: "all",
       name: "vendors"
